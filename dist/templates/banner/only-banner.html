@@ -1,0 +1,30 @@
+<script>
+  function showCookieBanner() {
+    var coiConsentBanner = document.getElementById('coiConsentBanner');
+    coiConsentBanner.style.display = 'block';
+  }
+
+  function hideCookieBanner() {
+    var coiConsentBanner = document.getElementById('coiConsentBanner');
+    coiConsentBanner.style.display = 'none';
+  }
+</script>
+<link rel="stylesheet" href="/templates/banner/only-banner.css">
+<div class="coi-consent-banner" id="coiConsentBanner">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <div class="coi-consent-banner__base" id="coiConsentBannerBase">
+    <div class="coi-consent-banner__consent-area">
+      <button onclick="CookieConsent.dialog.submitConsent()" class="coi-consent-banner__agree-button">
+        {{{accept_cookies_button}}}
+      </button>
+      <span class="coi-consent-banner__decline" onclick="CookieConsent.dialog.submitDecline()">{{{decline_cookies_button}}}</span>
+    </div>
+    <div class="coi-consent-banner__summary">
+      <div class="coi-consent-banner__summary-texts">
+        <span class="summary-texts__title ">{{{banner_heading}}}</span>
+        <span class="summary-texts__description">{{{banner_main_text}}}</span>
+        <a href="" class="summary-texts__show-details" id="coiShowDetails">{{{translations.show_details}}}</a>
+      </div>
+    </div>
+  </div>
+</div>

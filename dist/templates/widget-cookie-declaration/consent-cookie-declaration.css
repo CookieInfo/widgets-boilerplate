@@ -1,0 +1,151 @@
+.cooi-declaration-wrapper {
+  padding: 10px;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Roboto';
+}
+
+.cooi-declaration-wrapper .cooi-page-title {
+  font-size: 21px;
+  line-height: 24px;
+}
+
+.cooi-declaration-wrapper .cooi-cookies-info {
+  margin-top: 108px;
+  display: flex;
+  flex-flow: row;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 20px;
+}
+
+.cooi-declaration-wrapper .cooi-cookies-info .cooi-about-owner {
+  display: flex;
+  flex: 1 0 0;
+  margin-right: 2%;
+  font-weight: 500;
+  min-width: 210px;
+  color: #757575;
+  font-size: 14px;
+  flex-direction: column;
+}
+
+.cooi-declaration-wrapper .cooi-cookies-info .cooi-about-owner .cooi-last-scan {
+  display: flex;
+  flex-direction: column;
+  padding-top: 35px;
+}
+
+.cooi-declaration-wrapper
+  .cooi-cookies-info
+  .cooi-about-owner
+  .cooi-last-scan
+  .cooi-last-scan-text {
+  font-weight: bold;
+  color: #000000;
+}
+
+.cooi-declaration-wrapper
+  .cooi-cookies-info
+  .cooi-about-owner
+  .cooi-last-scan
+  .cooi-last-scan-date {
+  height: 20px;
+  border-radius: 3px;
+  color: rgba(0, 0, 0, 0.54);
+  background-color: #ebebeb;
+  font-size: 12px;
+  display: table;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0 14px;
+  max-width: 140px;
+  line-height: 20px;
+}
+
+.cooi-website_domains {
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
+.cooi-declaration-wrapper .cooi-cookies-info .cooi-why-cookies {
+  display: flex;
+  flex: 3 0 0;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cooi-declaration-wrapper .cooi-cookies-info .cooi-why-cookies > p {
+  font-size: 14px !important;
+  font-family: "Roboto" !important;
+}
+
+.cooi-declaration-wrapper .cooi-cookies-info .cooi-why-cookies > span {
+  font-size: 14px !important;
+  font-family: "Roboto" !important;
+}
+
+.cooi-declaration-wrapper .cooi-cookies-by-category {
+  padding-top: 20px;
+}
+
+.cooi-CookieDeclarationTypeHeader {
+  font-weight: bold;
+}
+
+.cooi-CookiesDeclarationTable {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0 0 18px 0;
+  padding: 0;
+  color: #757575;
+  font-size: 13px;
+  font: inherit;
+  vertical-align: baseline;
+  border-left: none;
+  border-right: none;
+}
+
+.cooi-CookiesDeclarationTableHeader {
+  font-weight: bold;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  padding: 4px;
+  font-size: 12px;
+  color: #757575;
+  padding: 20px 35px;
+  line-height: 14px;
+}
+
+.cooi-CookiesDeclarationTableHeader[dir="rtl"] {
+  text-align: right;
+}
+
+.cooi-CookiesDeclarationTableCell {
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: top;
+  padding: 15px 35px;
+  font-size: 13px;
+}
+
+.cooi-category-cookies {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.cooi-category-text {
+  padding: 60px 0 35px 0;
+  color: #757575;
+  font-size: 14px;
+  min-height: 90px;
+  box-sizing: border-box;
+  font-weight: 500;
+  border-bottom: 1px solid #e0e0e0;
+}
