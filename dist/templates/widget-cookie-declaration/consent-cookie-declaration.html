@@ -1,38 +1,36 @@
 <link rel="stylesheet" href="../templates/widget-cookie-declaration/consent-cookie-declaration.css">
-<div class="cooi-declaration-wrapper">
+<div class="coi-cookie-declaration">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <span class="cooi-page-title">{{{translations.cookies_overview}}}</span>
-  <div class="cooi-cookies-info">
-    <div class="cooi-about-owner">
-      <div class="owner-info">
-      </div>
-      <div class="cooi-website-domains">{{website_domains}}</div>
-      <div class="cooi-last-scan">
-        <span class="cooi-last-scan-text">{{last_updated}}</span>
-        <span class="cooi-last-scan-date">{{last_scan_date}}</span>
+  <span class="coi-cookie-declaration__page-title">{{{translations.cookies_overview}}}</span>
+  <div class="coi-cookie-declaration__cookies-info">
+    <div class="cookies-info__about-owner">
+      <div class="cookies-info__website-domains">{{website_domains}}</div>
+      <div class="cookies-info__last-scan">
+        <span class="cookies-info__last-scan-text">{{last_updated}}</span>
+        <span class="cookies-info__last-scan-date">{{last_scan_date}}</span>
       </div>
     </div>
-    <div class="cooi-why-cookies" id="cooi-whyCookies">{{{cookie_declaration_text}}}</div>
+    <div class="coi-cookie-declaration__why-cookies">{{{cookie_declaration_text}}}</div>
   </div>
-  <div class="cooi-cookies-by-category">
+  <div class="coi-cookie-declaration__cookies-list">
     {{#each cookie_categories}}
-      <div class="cooi-category-cookies">
-        <span class="cooi-CookieDeclarationTypeHeader">{{{this.cookie_type_name}}} ({{{this.cookie_type_count}}})</span>
-        <span class="cooi-category-text">{{{this.cookie_type_description}}}</span>
-        <table class="cooi-CookiesDeclarationTable">
+      <div class="cookies-list__cookie-categories">
+        <span class="cookies-list__category-name">{{{this.cookie_type_name}}} ({{{this.cookie_type_count}}})</span>
+        <span class="cookies-list__category-description">{{{this.cookie_type_description}}}</span>
+        <table class="cookies-list__cookies-list-table">
           {{#if this.cookie_type_count}}
             <thead>
               <tr>
-                <th scope="col" class="cooi-CookiesDeclarationTableHeader" style="width: 20%" dir="ltr">
+                <th scope="col" class="cookies-list-table__header" style="width: 20%" dir="ltr">
                   {{../translations.cookie_name_header}}
                 </th>
-                <th scope="col" class="cooi-CookiesDeclarationTableHeader" style="width: 20%" dir="ltr">
+                <th scope="col" class="cookies-list-table__header" style="width: 20%" dir="ltr">
                   {{../translations.cookie_provider_header}}
                 </th>
-                <th scope="col" class="cooi-CookiesDeclarationTableHeader" style="width: 45%" dir="ltr">
+                <th scope="col" class="cookies-list-table__header" style="width: 45%" dir="ltr">
                   {{../translations.cookie_purpose_header}}
                 </th>
-                <th scope="col" class="cooi-CookiesDeclarationTableHeader" style="width: 15%" dir="ltr">
+                <th scope="col" class="cookies-list-table__header" style="width: 15%" dir="ltr">
                   {{../translations.cookie_expiry_header}}
                 </th>
               </tr>
@@ -40,11 +38,11 @@
             <tbody>
               {{#each this.cookie_type_results}}
                 <tr>
-                  <td scope="row" class="cooi-CookiesDeclarationTableCell" title="{{this.name}}">{{{this.name}}}</td>
-                  <td class="cooi-CookiesDeclarationTableCell" title="{{this.domain}}">{{{this.domain}}}</td>
-                  <td class="cooi-CookiesDeclarationTableCell" title="{{this.description}}">{{{this.description}}}
+                  <td scope="row" class="cookies-list-table__cell" title="{{this.name}}">{{{this.name}}}</td>
+                  <td class="cookies-list-table__cell" title="{{this.domain}}">{{{this.domain}}}</td>
+                  <td class="cookies-list-table__cell" title="{{this.description}}">{{{this.description}}}
                   </td>
-                  <td class="cooi-CookiesDeclarationTableCell" title="{{this.expiration}}">{{{this.expiration}}}</td>
+                  <td class="cookies-list-table__cell" title="{{this.expiration}}">{{{this.expiration}}}</td>
                   <td></td>
                 </tr>
               {{/each}}
