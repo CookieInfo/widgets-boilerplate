@@ -79,6 +79,10 @@
   font-family: "Roboto" !important;
 }
 
+.coi-cookie-declaration__why-cookies > br {
+  margin: 10px;
+}
+
 .coi-cookie-declaration__cookies-list {
   padding-top: 20px;
 }
