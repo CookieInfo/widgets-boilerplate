@@ -65,6 +65,7 @@
 }
 
 .coi-consent-banner__name-container {
+  align-items: center;
   position: relative;
   height: 56px;
   line-height: 18px;
@@ -135,7 +136,7 @@
 }
 
 .left-column__website_domains {
-    word-break: break-word;
+  word-break: break-word;
 }
 
 .coi-consent-banner__right-column {
@@ -162,7 +163,6 @@
 
 .coi-consent-banner__found-cookies {
   border-top: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
 }
 
 .coi-consent-banner__cookie-details {
@@ -225,14 +225,14 @@
     .coi-consent-banner__description-container {
     z-index: 2;
   }
- 
+
   .cookie-details__detail-container.cookie-details__detail-container-name {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     width:15%;
   }
-  
+
   .cookie-details__detail-container.cookie-details__detail-container-provider {
     text-overflow: ellipsis;
     white-space: nowrap;

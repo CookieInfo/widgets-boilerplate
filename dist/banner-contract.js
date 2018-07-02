@@ -8,7 +8,7 @@ window.LocalCookieInformation.loadSampleTemplate(window.LocalCookieInformation.g
     var hideDetailsText = '';
     var website = '';
     var domains = '';
-    var categories = '';
+    var categories = 'cookie_cat_necessary,cookie_cat_functional,cookie_cat_statistic,cookie_cat_marketing,cookie_cat_unclassified';
     window.CookieInformation.initializeBanner(
       html,
       javascript,

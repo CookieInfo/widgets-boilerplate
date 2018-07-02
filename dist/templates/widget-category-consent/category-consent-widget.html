@@ -1,34 +1,34 @@
 <link rel="stylesheet" href="../templates/widget-category-consent/category-consent-widget.css">
-<div>
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <div class="cooi-categories-container">
-    <span class="cooi-page-title">{{{translations.category_consent_header}}}</span>
-    <div class="cooi-categories-list">
-      {{#each cookie_categories}}
-        <div class="cooi-single-category">
-          <div class="cooi-category-title-area">
-            <span class="cooi-category-title">{{{this.cookie_type_name}}}</span>
-            <div class="cooi-consent-switch-container">
-              {{#unless this.is_unclassified}}
-                {{#unless this.is_necessary}}
-                  <label class="cooi-consent-switch">
-                    <input type="checkbox" class="cooi-category-checkbox" onclick="CookieInformation.changeCategoryConsentDecision('{{this.cookie_type_label}}')"
-                      name="{{this.cookie_type_label}}">
-                    <span class="cooi-slider"></span>
-                  </label>
-                {{/unless}}
-              {{/unless}}
+<div class="coi-category-consent">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <span class="coi-category-consent__page-title">{{{translations.category_consent_header}}}</span>
+    <div class="coi-category-categories-list">
+        {{#each cookie_categories}}
+            <div class="categories-list__single-category">
+                <div class="categories-list__category-title-wrapper">
+                    <span class="categories-list__category-title">{{{this.cookie_type_name}}}</span>
+                    <div class="categories-list__switch-container">
+                        {{#unless this.is_unclassified}}
+                            {{#unless this.is_necessary}}
+                            <label class="switch-container__consent-switch">
+                                <input type="checkbox" class="switch-container__category-checkbox"
+                                       onclick="CookieInformation.changeCategoryConsentDecision('{{this.cookie_type_label}}')"
+                                       name="{{this.cookie_type_label}}">
+                                <span class="switch-container__slider"></span>
+                            </label>
+                            {{/unless}}
+                        {{/unless}}
+                    </div>
+                </div>
+                <div class="categories-list__description-wrapper">
+                    <div class="categories-list__description-text">{{{this.cookie_type_description}}}</div>
+                </div>
             </div>
-          </div>
-          <div class="cooi-category-desc-area">
-            <div class="cooi-category-desc">{{{this.cookie_type_description}}}</div>
-          </div>
-        </div>
-      {{/each}}
+        {{/each}}
     </div>
-    <div class="cooi-consent-decision">
-      <!-- <span class="cooi-select-all">SELECT ALL</span> -->
-      <button class="cooi-update-consent" onclick="CookieInformation.submitConsent()">{{{translations.update_consent_button}}}</button>
+    <div class="coi-category-consent__decison">
+        <button class="coi-category-consent__update-consent" onclick="CookieInformation.submitConsent()">
+            {{{translations.update_consent_button}}}
+        </button>
     </div>
-  </div>
 </div>
