@@ -1,0 +1,78 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+  <script src="../data/load-templates-data.js"></script>
+  <script>
+    LocalCookieInformation.setTemplatePath('/templates/banner-category-consent/banner-category-consent.html');
+  </script>
+  <script data-culture="en" id="CookieConsent" src="https://policy.app.cookieinformation.com/uc.js"></script>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .content {
+      margin: 30px;
+    }
+
+    .placeholder {
+      display: block;
+      width: 300px;
+      height: 200px;
+      background: #ddd;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 20px;
+      box-sizing: border-box;
+    }
+
+    .placeholder.contentblocked {
+      background: #393;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <p>
+      <a href='javascript:CookieConsent.show();'>Open consent banner</a>
+    </p>
+    <p>
+      <a href='/'>Go back</a>
+    </p>
+  </div>
+  <!-- 
+      Blocking JavaScript execution using CookieInformation JS API 
+    -->
+  <script>
+    if (CookieInformation.getConsentGivenFor('cookie_cat_marketing')) {
+      (function () {
+        document.write('<div class="placeholder">[MARKETING] script executed</div>');
+      })();
+    }
+
+    if (CookieInformation.getConsentGivenFor('cookie_cat_functional')) {
+      (function () {
+        document.write('<div class="placeholder">[FUNCTIONAL] script executed</div>');
+      })();
+    }
+
+    if (CookieInformation.getConsentGivenFor('cookie_cat_statistic')) {
+      document.write('<img class="placeholder" src="https://picsum.photos/300/200?random" title="STATISTIC">');
+    } else {
+      document.write('<div class="placeholder contentblocked">Content could not be displayed as you have not given consent for Statistic category.</div>');
+    }
+  </script>
+  <!-- 
+      Blocking HTML elements to render using CookieInformation API attributes 
+    -->
+  <img src="" data-consent-src="https://picsum.photos/300/200?random" data-category-consent="cookie_cat_marketing" title="MARKETING"
+    class="placeholder">
+  <iframe src="" data-consent-src="http://example.com" data-category-consent="cookie_cat_statistic" class="placeholder"></iframe>
+  <script src="" data-consent-src="../data/sample-script.js" data-category-consent="cookie_cat_marketing"></script>
+</body>
+
+</html>

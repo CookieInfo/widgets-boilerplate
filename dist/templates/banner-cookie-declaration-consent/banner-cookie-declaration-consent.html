@@ -1,0 +1,173 @@
+<script>
+  function toggleDetails(id) {
+    var coiConsentBannerBase = document.getElementById('coiConsentBannerBase');
+    var coiConsentBanner = document.getElementById('coiConsentBanner');
+    var coiShowDetails = document.getElementById('coiShowDetails');
+    var coiHideDetails = document.getElementById('coiHideDetails');
+    var coiConsentBannerBottom = document.getElementById('coiConsentBannerBottom');
+    var isMobile = window.matchMedia('(max-width: 760px)').matches;
+
+    if (id === 'coiShowDetails') {
+      coiConsentBannerBottom.style.maxHeight = coiConsentBannerBottom.scrollHeight
+        + coiConsentBannerBase.scrollHeight + "px";
+      coiConsentBanner.style.overflowY = 'auto';
+      coiShowDetails.style.display = 'none';
+      coiHideDetails.style.display = 'block';
+
+      if (!isMobile) {
+        document.getElementById('coi-consent-banner__category-expander-cookie_cat_necessary').checked = true;
+      }
+    }
+    else {
+      coiConsentBannerBottom.style.maxHeight = '0';
+      coiConsentBanner.style.overflowY = 'hidden';
+      coiConsentBanner.scrollTop = '0';
+      coiShowDetails.style.display = 'block';
+      coiHideDetails.style.display = 'none';
+    }
+  }
+
+  function toggleIndicator(element) {
+    if (element.id === 'coiDeclarationIndicator') {
+      document.getElementById('coiConsentBannerAboutOwnerColumn').style.display = 'none';
+      document.getElementById('coiConsentBannerCategoriesWrapper').style.display = 'block';
+      document.getElementById('coi-consent-banner__bottom-bar').style.display = 'flex';
+
+      element.classList.toggle('active');
+      document.getElementById('coiAboutIndicator').classList.remove('active');
+    }
+    else if (element.id === 'coiAboutIndicator') {
+      document.getElementById('coiConsentBannerAboutOwnerColumn').style.display = 'flex';
+      document.getElementById('coiConsentBannerCategoriesWrapper').style.display = 'none';
+      document.getElementById('coi-consent-banner__bottom-bar').style.display = 'none';
+
+      element.classList.toggle('active');
+      document.getElementById('coiDeclarationIndicator').classList.remove('active');
+    }
+  }
+
+  function showDescription(event, id) {
+    var isMobile = window.matchMedia('(max-width: 760px)').matches;
+    var categoryCheckbox = document.getElementById(id);
+
+    if (isMobile) {
+      categoryCheckbox.checked = !categoryCheckbox.checked;
+      event.preventDefault();
+    }
+  }
+
+  function showCookieBanner() {
+    var coiConsentBanner = document.getElementById('coiConsentBanner');
+    coiConsentBanner.style.display = 'block';
+  }
+
+  function hideCookieBanner() {
+    var coiConsentBanner = document.getElementById('coiConsentBanner');
+    coiConsentBanner.style.display = 'none';
+  }
+</script>
+<link rel="stylesheet" href="/templates/banner/only-banner.css">
+<link rel="stylesheet" href="/templates/banner-cookie-declaration/banner-cookie-declaration.css">
+<link rel="stylesheet" href="/templates/banner-cookie-declaration-consent/banner-cookie-declaration-consent.css">
+<div class="coi-consent-banner" id="coiConsentBanner">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <div class="coi-consent-banner__base" id="coiConsentBannerBase">
+    <div class="coi-consent-banner__consent-area">
+      <button onclick="CookieInformation.submitAllCategories();" class="coi-consent-banner__agree-button">
+        {{accept_cookies_button}}
+      </button>
+      <span class="coi-consent-banner__decline" onclick="CookieConsent.dialog.submitDecline()">{{{decline_cookies_button}}}</span>
+    </div>
+    <div class="coi-consent-banner__summary">
+      <div class="coi-consent-banner__summary-texts">
+        <span class="summary-texts__title ">{{{banner_heading}}}</span>
+        <span class="summary-texts__description">{{{banner_main_text}}}</span>
+        <span onclick="toggleDetails(this.id)" class="summary-texts__show-details" id="coiShowDetails">{{{translations.show_details}}}</span>
+        <span onclick="toggleDetails(this.id)" class="summary-texts__hide-details" id="coiHideDetails">{{{translations.hide_details}}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="coi-consent-banner__bottom" id="coiConsentBannerBottom">
+    <div class="coi-consent-banner__indicators-container">
+      <a onclick="toggleIndicator(this)" class="coi-consent-banner__indicator active" id="coiDeclarationIndicator">{{{translations.cookies_overview}}}</a>
+      <a onclick="toggleIndicator(this)" class="coi-consent-banner__indicator" id="coiAboutIndicator">{{{translations.about_cookies}}}</a>
+    </div>
+    <div class="coi-consent-banner__bottom-columns">
+      <div class="coi-consent-banner__categories-wrapper" id="coiConsentBannerCategoriesWrapper">
+        {{#each cookie_categories}}
+          <div class="coi-consent-banner__category-container">
+            {{#if this.is_necessary}}
+              <input class="coi-consent-banner__category-expander" id="coi-consent-banner__category-expander-{{this.cookie_type_label}}"
+                     type="radio" name="tabs">
+            {{/if}}
+            {{#unless this.is_necessary}}
+              <input class="coi-consent-banner__category-expander" id="coi-consent-banner__category-expander-{{this.cookie_type_label}}"
+                     type="radio" name="tabs">
+            {{/unless}}
+            <div class="coi-consent-banner__name-container">
+              <label onclick="showDescription(event, this.htmlFor);" for="coi-consent-banner__category-expander-{{this.cookie_type_label}}" class="coi-consent-banner__category-name coi-consent-banner__category-name--slider">
+                {{{this.cookie_type_name}}}</label>
+              {{#unless this.is_necessary}}
+                {{#unless this.is_unclassified}}
+                  <div class="coi-consent-banner__switch-container" id="switch-{{this.cookie_type_label}}">
+                    <label class="coi-consent-banner__switch">
+                      <input type="checkbox" class="coi-consent-banner__switch-checkbox" name="{{this.cookie_type_label}}" id="switch-{{this.cookie_type_label}}-slider"
+                             onclick="CookieInformation.changeCategoryConsentDecision('{{this.cookie_type_label}}');">
+                      <span class="coi-consent-banner__slider"></span>
+                    </label>
+                  </div>
+                {{/unless}}
+              {{/unless}}
+            </div>
+            <div class="coi-consent-banner__description-container" id="coi-consent-banner__description-container-{{this.cookie_type_label}}">
+              <div class="coi-consent-banner__category-description">{{{this.cookie_type_description}}}</div>
+                <div class="coi-consent-banner__found-cookies">
+                  {{#if this.cookie_type_count}}
+                    {{#each this.cookie_type_results}}
+                      <div class="coi-consent-banner__cookie-details">
+                        <div class="cookie-details__detail-container cookie-details__detail-container-name" title="{{this.name}}">
+                          <span class="cookie-details__detail-title">{{../../translations.cookie_name_header}}:</span>
+                          <span class="cookie-details__detail-content">{{{this.name}}}</span>
+                        </div>
+                        <div class="cookie-details__detail-container cookie-details__detail-container-provider" title="{{this.domain}}">
+                          <span class="cookie-details__detail-title">{{{../../translations.cookie_provider_header}}}:</span>
+                          <span class="cookie-details__detail-content">{{{this.domain}}}</span>
+                        </div>
+                        <div class="cookie-details__detail-container cookie-details__detail-container-purpose" title="{{this.description}}">
+                          <span class="cookie-details__detail-title">{{{../../translations.cookie_purpose_header}}}:</span>
+                          <span class="cookie-details__detail-content">{{{this.description}}}</span>
+                        </div>
+                        <div class="cookie-details__detail-container cookie-details__detail-container-expiry" title="{{this.expiration}}">
+                          <span class="cookie-details__detail-title">{{{../../translations.cookie_expiry_header}}}:</span>
+                          <span class="cookie-details__detail-content">{{{this.expiration}}}</span>
+                        </div>
+                      </div>
+                    {{/each}}
+                  {{/if}}
+                </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      <div class="coi-consent-banner__about-owner-column" id="coiConsentBannerAboutOwnerColumn">
+        <div class="coi-consent-banner__left-column">
+          <div class="left-column__about-owner"></div>
+          <div class="left-column__website_domains">
+            <span class="left-column__bold-text">{{{translations.domain_list_explanation}}}</span>
+            <span class="left-column__website-domains">{{{website_domains}}}</span>
+          </div>
+          <div class="left-column__last-scan">
+            <span class="left-column__bold-text">{{{last_updated}}}</span>
+            <span class="left-column__last-scan-date">{{{last_scan_date}}}</span>
+          </div>
+        </div>
+        <div class="coi-consent-banner__right-column">
+          <div class="coi-consent-banner__why-cookies">{{{cookie_declaration_text}}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="coi-consent-banner__bottom-bar" id="coi-consent-banner__bottom-bar">
+      <span onclick="CookieInformation.submitConsent()" class="bottom-bar__update-consent">{{{translations.update_consent_button}}}</span>
+    </div>
+  </div>
+</div>

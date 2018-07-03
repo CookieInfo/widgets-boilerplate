@@ -1,0 +1,18 @@
+{
+  "name": "cookieinformation-widgets-boilerplate",
+  "description": "Provides ready to use Cookie Information templates ",
+  "version": "1.0.0",
+  "repository": "https://github.com/CookieInfo/widgets-boilerplate",
+  "main": "index.html",
+  "scripts": {
+    "start": "browser-sync start --server --serveStatic './dist' --files 'dist/**' --port 8085",
+    "lint": "eslint ."
+  },
+  "author": "Cookie Information ApS",
+  "license": "",
+  "devDependencies": {
+    "browser-sync": "~2.24.4",
+    "eslint": "^4.19.1",
+    "eslint-config-strongloop": "^2.1.0"
+  }
+}

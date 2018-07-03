@@ -1,0 +1,122 @@
+.coi-consent-banner__base {
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+.coi-consent-banner__consent-area {
+  justify-content: space-between;
+  flex-direction: row;
+  flex: 1;
+}
+
+.coi-consent-banner__cookie-categories {
+  display: flex;
+  justify-content: space-around;
+}
+
+.coi-consent-banner__category-name {
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+  width: 120px;
+  color: #272727;
+}
+
+.coi-consent-banner__category-name:hover
+  .coi-consent-banner__category-checkbox
+  ~ .coi-consent-banner__checkmark {
+  background-color: #ccc;
+}
+
+.coi-consent-banner__category-name:hover
+  .coi-consent-banner__category-checkbox:checked
+  ~ .coi-consent-banner__checkmark {
+  background-color: #249723;
+}
+
+.coi-consent-banner__category-checkbox:checked
+  ~ .coi-consent-banner__checkmark {
+  background-color: #249723;
+  border: 2px solid #249723;
+}
+
+.coi-consent-banner__category-checkbox:checked ~ .disabled {
+  background-color: #b2b2b2;
+  border: 2px solid #b2b2b2;
+}
+.coi-consent-banner__category-name:hover
+  .coi-consent-banner__category-checkbox:checked
+  ~ .disabled {
+  background-color: #b2b2b2;
+}
+
+.coi-consent-banner__category-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  display: none;
+}
+
+.coi-consent-banner__category-checkbox:checked
+  ~ .coi-consent-banner__checkmark:after {
+  display: block;
+}
+
+.coi-consent-banner__checkmark:after {
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.coi-consent-banner__checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 17px;
+  width: 17px;
+  background-color: #eee;
+  border-radius: 2px;
+  border: 2px solid #767676;
+}
+
+.coi-consent-banner__checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.coi-consent-banner__summary {
+  flex: 1;
+}
+
+.cookie_cat_necessary {
+  cursor: default;
+}
+
+/*Styles active on mobile version*/
+@media screen and (max-width: 550px) {
+  .coi-consent-banner__consent-area {
+    flex-direction: column;
+  }
+
+  .coi-consent-banner__agree-button {
+    width: 90%;
+  }
+
+  .coi-consent-banner__cookie-categories {
+    flex-wrap: wrap;
+  }
+
+  .coi-consent-banner__category-name {
+    flex-basis: 28%;
+    padding: 0 0 0 23px;
+    margin: 10px 10px 0 10px;
+  }
+}

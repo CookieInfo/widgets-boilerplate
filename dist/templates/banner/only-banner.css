@@ -1,0 +1,131 @@
+.coi-consent-banner {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  max-height: 90%;
+  border-top: 1px solid #e0e0e0;
+  overflow-y: hidden;
+  font-family: "Roboto";
+  background-color: #fdfdfd;
+  z-index: 10000;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.54);
+  box-sizing: border-box;
+}
+
+.coi-consent-banner__consent-area {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 30px;
+}
+
+.coi-consent-banner__agree-button {
+  min-width: 119px;
+  min-height: 36px;
+  background-color: #249723;
+  color: white;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  align-content: flex-end;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  line-height: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.coi-consent-banner__agree-button:hover {
+  background-color: #249723;
+}
+
+.coi-consent-banner__decline {
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  line-height: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.coi-consent-banner__summary {
+  box-sizing: border-box;
+  display: flex;
+  opacity: 0.9;
+  padding: 30px;
+  background-color: #f5f5f5;
+  line-height: 16px;
+}
+
+.coi-consent-banner__summary-texts {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-texts__title {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.summary-texts__show-details {
+  font-size: 14px;
+  cursor: pointer;
+  color: #000000;
+  margin-top: 5px;
+  text-decoration: none;
+}
+
+/*Styles active on desktop version*/
+@media screen and (min-width: 700px) {
+  .coi-consent-banner__base {
+    display: inline-flex;
+    width: 100%;
+  }
+
+  .coi-consent-banner__consent-area {
+    flex-direction: column;
+    border-right: 1px solid #e0e0e0;
+  }
+
+  .coi-consent-banner__decline {
+    margin-top: 15px;
+  }
+
+  .coi-consent-banner__consent-area {
+    flex: 1 0 0;
+  }
+
+  .coi-consent-banner__summary {
+    flex: 3 0 0;
+  }
+}
+
+/*Styles active on mobile version*/
+@media screen and (max-width: 700px) {
+  .coi-consent-banner__base {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .coi-consent-banner__consent-area {
+    flex-direction: row;
+    flex: 1;
+  }
+
+  .coi-consent-banner__decline {
+    margin-left: 20px;
+    flex-basis: auto;
+  }
+
+  .coi-consent-banner__summary {
+    flex: 1;
+  }
+}

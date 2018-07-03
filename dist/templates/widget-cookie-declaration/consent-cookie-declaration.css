@@ -1,0 +1,147 @@
+.coi-cookie-declaration {
+  padding: 10px;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Roboto';
+}
+
+.coi-cookie-declaration__page-title {
+  font-size: 21px;
+  line-height: 24px;
+}
+
+.coi-cookie-declaration__cookies-info {
+  margin-top: 108px;
+  display: flex;
+  flex-flow: row;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 20px;
+}
+
+.cookies-info__about-owner {
+  display: flex;
+  flex: 1 0 0;
+  margin-right: 2%;
+  font-weight: 500;
+  min-width: 210px;
+  color: #757575;
+  font-size: 14px;
+  flex-direction: column;
+}
+
+.cookies-info__last-scan {
+  display: flex;
+  flex-direction: column;
+  padding-top: 35px;
+}
+
+.cookies-info__last-scan-text {
+  font-weight: bold;
+  color: #000000;
+}
+
+.cookies-info__last-scan-date {
+  height: 20px;
+  border-radius: 3px;
+  color: rgba(0, 0, 0, 0.54);
+  background-color: #ebebeb;
+  font-size: 12px;
+  display: table;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0 14px;
+  max-width: 140px;
+  line-height: 20px;
+}
+
+.cooi-website_domains {
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
+.coi-cookie-declaration__why-cookies {
+  display: flex;
+  flex: 3 0 0;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.coi-cookie-declaration__why-cookies > p {
+  font-size: 14px !important;
+  font-family: "Roboto" !important;
+}
+
+.coi-cookie-declaration__why-cookies > span {
+  font-size: 14px !important;
+  font-family: "Roboto" !important;
+}
+
+.coi-cookie-declaration__why-cookies > br {
+  margin: 10px;
+}
+
+.coi-cookie-declaration__cookies-list {
+  padding-top: 20px;
+}
+
+.cookies-list__category-name {
+  font-weight: bold;
+}
+
+.cookies-list__cookies-list-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0 0 18px 0;
+  padding: 0;
+  color: #757575;
+  font-size: 13px;
+  font: inherit;
+  vertical-align: baseline;
+  border-left: none;
+  border-right: none;
+}
+
+.cookies-list-table__header {
+  font-weight: bold;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  padding: 4px;
+  font-size: 12px;
+  color: #757575;
+  padding: 20px 20px;
+  line-height: 14px;
+}
+
+.cookies-list-table__header[dir="rtl"] {
+  text-align: right;
+}
+
+.cookies-list-table__cell {
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: top;
+  padding: 15px 20px;
+  font-size: 13px;
+}
+
+.cookies-list__cookie-categories {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.cookies-list__category-description {
+  padding: 60px 0 35px 0;
+  color: #757575;
+  font-size: 14px;
+  min-height: 90px;
+  box-sizing: border-box;
+  font-weight: 500;
+  border-bottom: 1px solid #e0e0e0;
+}
