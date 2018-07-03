@@ -15,7 +15,7 @@
       coiHideDetails.style.display = 'block';
 
       if (!isMobile) {
-        document.getElementById('coi-consent-banner__category-expander-cookie_cat_necessary').checked = true;
+        document.getElementById('coi-consent-banner__category-expander-cookie_cat_necessary').style.color = '#272727';
       }
     }
     else {
@@ -46,13 +46,37 @@
     }
   }
 
-  function showDescription(event, id) {
-    var isMobile = window.matchMedia('(max-width: 760px)').matches;
-    var categoryCheckbox = document.getElementById(id);
+  var currentCategory = '';
 
-    if (isMobile) {
-      categoryCheckbox.checked = !categoryCheckbox.checked;
-      event.preventDefault();
+  function showDescription(id) {
+    var isMobile = window.matchMedia('(max-width: 760px)').matches;
+    var categoryNames = document.getElementsByClassName('coi-consent-banner__category-name');
+    var descriptions = document.getElementsByClassName('coi-consent-banner__description-container');
+    var category = document.getElementById(id);
+    var description = document.getElementById('coi-consent-banner__description-container-' + id);
+
+    for (var i = 0; i < categoryNames.length; i++) {
+      categoryNames[i].style.color = '#272727';
+    }
+
+    for (var i = 0; i < descriptions.length; i++) {
+      descriptions[i].style.height = '0';
+      descriptions[i].style.zIndex= '1';
+    }
+
+    if (!(isMobile && (id === currentCategory))) {
+      category.style.color = '#249723'
+      description.style.height = 'auto';
+      if (isMobile) {
+        description.style.zIndex = '100';
+        currentCategory = id
+      }
+      else {
+        description.style.zIndex = '2';
+      }
+    }
+    else if (id === currentCategory) {
+      currentCategory = '';
     }
   }
 
@@ -96,17 +120,9 @@
       <div class="coi-consent-banner__categories-wrapper" id="coiConsentBannerCategoriesWrapper">
         {{#each cookie_categories}}
           <div class="coi-consent-banner__category-container">
-            {{#if this.is_necessary}}
-              <input class="coi-consent-banner__category-expander" id="coi-consent-banner__category-expander-{{this.cookie_type_label}}"
-                     type="radio" name="tabs">
-            {{/if}}
-            {{#unless this.is_necessary}}
-              <input class="coi-consent-banner__category-expander" id="coi-consent-banner__category-expander-{{this.cookie_type_label}}"
-                     type="radio" name="tabs">
-            {{/unless}}
             <div class="coi-consent-banner__name-container">
-              <label onclick="showDescription(event, this.htmlFor);" for="coi-consent-banner__category-expander-{{this.cookie_type_label}}" class="coi-consent-banner__category-name coi-consent-banner__category-name--slider">
-                {{{this.cookie_type_name}}}</label>
+              <span onclick="showDescription(this.id);" class="coi-consent-banner__category-name" id="{{this.cookie_type_label}}">
+                {{{this.cookie_type_name}}}</span>
               {{#unless this.is_necessary}}
                 {{#unless this.is_unclassified}}
                   <div class="coi-consent-banner__switch-container" id="switch-{{this.cookie_type_label}}">
