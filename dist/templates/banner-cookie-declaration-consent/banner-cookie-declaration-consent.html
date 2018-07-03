@@ -56,24 +56,17 @@
     var description = document.getElementById('coi-consent-banner__description-container-' + id);
 
     for (var i = 0; i < categoryNames.length; i++) {
-      categoryNames[i].style.color = '#272727';
+      categoryNames[i].classList.remove('active');
     }
 
     for (var i = 0; i < descriptions.length; i++) {
-      descriptions[i].style.height = '0';
-      descriptions[i].style.zIndex= '1';
+      descriptions[i].classList.remove('active');
     }
 
     if (!(isMobile && (id === currentCategory))) {
-      category.style.color = '#249723'
-      description.style.height = 'auto';
-      if (isMobile) {
-        description.style.zIndex = '100';
-        currentCategory = id
-      }
-      else {
-        description.style.zIndex = '2';
-      }
+      category.classList.add('active');
+      description.classList.add('active');
+      currentCategory = id
     }
     else if (id === currentCategory) {
       currentCategory = '';
