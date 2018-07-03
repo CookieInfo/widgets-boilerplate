@@ -5,6 +5,7 @@
     var coiShowDetails = document.getElementById('coiShowDetails');
     var coiHideDetails = document.getElementById('coiHideDetails');
     var coiConsentBannerBottom = document.getElementById('coiConsentBannerBottom');
+    var isMobile = window.matchMedia('(max-width: 760px)').matches;
 
     if (id === 'coiShowDetails') {
       coiConsentBannerBottom.style.maxHeight = coiConsentBannerBottom.scrollHeight
@@ -12,6 +13,10 @@
       coiConsentBanner.style.overflowY = 'auto';
       coiShowDetails.style.display = 'none';
       coiHideDetails.style.display = 'block';
+
+      if (!isMobile) {
+        document.getElementById('cookie_cat_necessary').classList.toggle('active');
+      }
     }
     else {
       coiConsentBannerBottom.style.maxHeight = '0';
