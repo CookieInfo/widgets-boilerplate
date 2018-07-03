@@ -42,7 +42,6 @@
   var currentCategory = '';
 
   function showDescription(id) {
-    var isMobile = window.matchMedia('(max-width: 760px)').matches;
     var categoryNames = document.getElementsByClassName('coi-consent-banner__category-name');
     var descriptions = document.getElementsByClassName('coi-consent-banner__description-container');
     var category = document.getElementById(id);
@@ -55,13 +54,13 @@
     for (var i = 0; i < descriptions.length; i++) {
       descriptions[i].classList.remove('active');
     }
-
-    if (!(isMobile && (id === currentCategory))) {
-      category.classList.add('active');
-      description.classList.add('active');
+    debugger;
+    if (id !== currentCategory) {
+      category.classList.toggle('active');
+      description.classList.toggle('active');
       currentCategory = id
     }
-    else if (id === currentCategory) {
+    else {
       currentCategory = '';
     }
   }
