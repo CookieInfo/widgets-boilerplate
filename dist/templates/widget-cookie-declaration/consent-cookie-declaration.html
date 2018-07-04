@@ -17,38 +17,30 @@
       <div class="cookies-list__cookie-categories">
         <span class="cookies-list__category-name">{{{this.cookie_type_name}}} ({{{this.cookie_type_count}}})</span>
         <span class="cookies-list__category-description">{{{this.cookie_type_description}}}</span>
-        <table class="cookies-list__cookies-list-table">
           {{#if this.cookie_type_count}}
-            <thead>
-              <tr>
-                <th scope="col" class="cookies-list-table__header" style="width: 20%" dir="ltr">
-                  {{{../translations.cookie_name_header}}}
-                </th>
-                <th scope="col" class="cookies-list-table__header" style="width: 20%" dir="ltr">
-                  {{{../translations.cookie_provider_header}}}
-                </th>
-                <th scope="col" class="cookies-list-table__header" style="width: 45%" dir="ltr">
-                  {{{../translations.cookie_purpose_header}}}
-                </th>
-                <th scope="col" class="cookies-list-table__header" style="width: 15%" dir="ltr">
-                  {{{../translations.cookie_expiry_header}}}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
+            <div class="cookies-list__cookies-list-table">
               {{#each this.cookie_type_results}}
-                <tr>
-                  <td scope="row" class="cookies-list-table__cell" title="{{this.name}}">{{{this.name}}}</td>
-                  <td class="cookies-list-table__cell" title="{{this.domain}}">{{{this.domain}}}</td>
-                  <td class="cookies-list-table__cell" title="{{this.description}}">{{{this.description}}}
-                  </td>
-                  <td class="cookies-list-table__cell" title="{{this.expiration}}">{{{this.expiration}}}</td>
-                  <td></td>
-                </tr>
+                <div class="coi-consent-banner__cookie-details">
+                  <div class="cookie-details__detail-container cookie-details__detail-container-name" title="{{this.name}}">
+                    <span class="cookie-details__detail-title">{{{../../translations.cookie_name_header}}}:</span>
+                    <span class="cookie-details__detail-content">{{{this.name}}}</span>
+                  </div>
+                  <div class="cookie-details__detail-container cookie-details__detail-container-provider" title="{{this.domain}}">
+                    <span class="cookie-details__detail-title">{{{../../translations.cookie_provider_header}}}:</span>
+                    <span class="cookie-details__detail-content">{{{this.domain}}}</span>
+                  </div>
+                  <div class="cookie-details__detail-container cookie-details__detail-container-purpose" title="{{this.description}}">
+                    <span class="cookie-details__detail-title">{{{../../translations.cookie_purpose_header}}}:</span>
+                    <span class="cookie-details__detail-content">{{{this.description}}}</span>
+                  </div>
+                  <div class="cookie-details__detail-container cookie-details__detail-container-expiry" title="{{this.expiration}}">
+                    <span class="cookie-details__detail-title">{{{../../translations.cookie_expiry_header}}}:</span>
+                    <span class="cookie-details__detail-content">{{{this.expiration}}}</span>
+                  </div>
+                </div>
               {{/each}}
-            </tbody>
-          {{/if}}
-        </table>
+            </div>
+        {{/if}}
       </div>
     {{/each}}
   </div>

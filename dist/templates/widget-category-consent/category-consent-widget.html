@@ -27,6 +27,7 @@
         {{/each}}
     </div>
     <div class="coi-category-consent__decison">
+        <span class="coi-category-consent__select-all" onclick="CookieInformation.submitAllCategories();">{{{translations.multiaccept}}}</span>
         <button class="coi-category-consent__update-consent" onclick="CookieInformation.submitConsent()">
             {{{translations.update_consent_button}}}
         </button>

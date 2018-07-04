@@ -12,16 +12,14 @@
 }
 
 .coi-cookie-declaration__cookies-info {
-  margin-top: 108px;
+  margin-top: 40px;
   display: flex;
-  flex-flow: row;
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 20px;
 }
 
 .cookies-info__about-owner {
   display: flex;
-  flex: 1 0 0;
   margin-right: 2%;
   font-weight: 500;
   min-width: 210px;
@@ -63,7 +61,6 @@
 
 .coi-cookie-declaration__why-cookies {
   display: flex;
-  flex: 3 0 0;
   flex-direction: column;
   font-size: 14px;
   font-weight: 500;
@@ -92,42 +89,25 @@
 }
 
 .cookies-list__cookies-list-table {
-  table-layout: fixed;
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin: 0 0 18px 0;
-  padding: 0;
-  color: #757575;
-  font-size: 13px;
-  font: inherit;
-  vertical-align: baseline;
-  border-left: none;
-  border-right: none;
-}
-
-.cookies-list-table__header {
-  font-weight: bold;
+  border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
-  text-align: left;
-  padding: 4px;
-  font-size: 12px;
+}
+
+.coi-consent-banner__cookie-details {
+  display: flex;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  background-color: #fcfcfc;
   color: #757575;
-  padding: 20px 20px;
-  line-height: 14px;
 }
 
-.cookies-list-table__header[dir="rtl"] {
-  text-align: right;
+.coi-consent-banner__cookie-details:nth-child(even) {
+  background-color: #f3f3f4;
 }
 
-.cookies-list-table__cell {
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  border-bottom: 1px solid #e0e0e0;
-  vertical-align: top;
-  padding: 15px 20px;
+.cookie-details__detail-container {
   font-size: 13px;
+  padding: 0 10px;
 }
 
 .cookies-list__cookie-categories {
@@ -137,11 +117,66 @@
 }
 
 .cookies-list__category-description {
-  padding: 60px 0 35px 0;
+  padding: 50px 0 35px 0;
   color: #757575;
   font-size: 14px;
   min-height: 90px;
   box-sizing: border-box;
   font-weight: 500;
-  border-bottom: 1px solid #e0e0e0;
+}
+
+/*Styles active only on desktop version*/
+@media screen and (min-width: 760px) {
+  .coi-cookie-declaration__cookies-info {
+    flex-direction: row;
+  }
+
+  .cookies-info__about-owner {
+    flex: 1 0 0;
+  }
+
+  .coi-cookie-declaration__why-cookies {
+    flex: 3 0 0;
+  }
+
+  .coi-consent-banner__cookie-details {
+    flex-direction: row;
+  }
+
+  .cookie-details__detail-title {
+    display: none;
+  }
+
+  .cookie-details__detail-container-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width:15%;
+  }
+
+  .cookie-details__detail-container-provider {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width:25%;
+  }
+
+  .cookie-details__detail-container-purpose {
+    width:50%;
+  }
+
+  .cookie-details__detail-container-expiry {
+    width:10%;
+  }
+}
+
+/*Styles active only on mobile version*/
+@media screen and (max-width: 760px) {
+  .coi-cookie-declaration__cookies-info {
+    flex-direction: column;
+  }
+
+  .coi-consent-banner__cookie-details {
+    flex-direction: column;
+  }
 }
