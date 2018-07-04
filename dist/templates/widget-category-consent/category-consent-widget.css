@@ -32,11 +32,11 @@
 .coi-category-consent__decison {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .coi-category-consent__select-all {
   display: flex;
-  align-items: center;
   margin-right: 30px;
   text-transform: uppercase;
 }
@@ -49,8 +49,6 @@
   border-radius: 2px;
   border: none;
   cursor: pointer;
-  align-content: flex-end;
-  margin: 18px 5px 0 5px;
   font-size: 14px;
   letter-spacing: 0.5px;
   line-height: 16px;
