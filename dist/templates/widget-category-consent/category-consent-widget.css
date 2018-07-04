@@ -148,13 +148,16 @@
   .categories-list__single-category {
     flex-direction: row;
   }
+
   .categories-list__category-title-wrapper {
     flex: 1 0 0;
   }
+
   .categories-list__description-wrapper {
     flex: 3 0 0;
     padding-bottom: 10px;
   }
+
   .coi-category-consent__decison {
     justify-content: flex-end;
   }
@@ -164,9 +167,11 @@
   .categories-list__single-category {
     flex-direction: column;
   }
+
   .categories-list__description-wrapper {
     padding: 20px 0;
   }
+
   .coi-category-consent__decison {
     justify-content: center;
   }

@@ -130,12 +130,15 @@
   .coi-cookie-declaration__cookies-info {
     flex-direction: row;
   }
+
   .cookies-info__about-owner {
     flex: 1 0 0;
   }
+
   .coi-cookie-declaration__why-cookies {
     flex: 3 0 0;
   }
+
   .coi-consent-banner__cookie-details {
     flex-direction: row;
   }
@@ -157,9 +160,11 @@
     overflow: hidden;
     width:25%;
   }
+
   .cookie-details__detail-container-purpose {
     width:50%;
   }
+
   .cookie-details__detail-container-expiry {
     width:10%;
   }
@@ -170,6 +175,7 @@
   .coi-cookie-declaration__cookies-info {
     flex-direction: column;
   }
+
   .coi-consent-banner__cookie-details {
     flex-direction: column;
   }
