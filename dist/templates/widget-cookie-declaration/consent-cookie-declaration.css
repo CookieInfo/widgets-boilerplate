@@ -94,11 +94,11 @@
 }
 
 .coi-consent-banner__cookie-details {
-  color: #757575;
   display: flex;
   padding: 10px 20px;
   box-sizing: border-box;
   background-color: #fcfcfc;
+  color: #757575;
 }
 
 .coi-consent-banner__cookie-details:nth-child(even) {
