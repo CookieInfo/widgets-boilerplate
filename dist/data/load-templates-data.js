@@ -42,6 +42,7 @@ window.LocalCookieInformation = (function () {
         cookie_purpose_header: 'Purpose',
         cookie_expiry_header: 'Expiry',
         update_consent_button: 'Update consent',
+        multiaccept: 'Select all',
         domain_list_explanation: 'Your consent applies to the following domains: ',
       },
       last_updated: 'Last scan was performed at:',
