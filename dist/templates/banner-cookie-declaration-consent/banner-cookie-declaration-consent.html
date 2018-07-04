@@ -52,7 +52,10 @@
     var categoryNames = document.getElementsByClassName('coi-consent-banner__category-name');
     var descriptions = document.getElementsByClassName('coi-consent-banner__description-container');
     var category = document.getElementById(id);
-    var description = document.getElementById('coi-consent-banner__description-container-' + id);
+    var descriptionContainer = document.getElementById('coi-consent-banner__description-container-' + id);
+    var description = document.getElementById('description-' + id);
+    var foundCookiesTable = document.getElementById('found-cookies-' + id);
+    var descriptionContainerHeight = description.scrollHeight + foundCookiesTable.scrollHeight + 'px';
 
     for (var i = 0; i < categoryNames.length; i++) {
       categoryNames[i].classList.remove('active');
@@ -60,12 +63,14 @@
 
     for (var i = 0; i < descriptions.length; i++) {
       descriptions[i].classList.remove('active');
+      descriptions[i].style.maxHeight = '0';
     }
 
     if (id !== currentCategory) {
       category.classList.toggle('active');
-      description.classList.toggle('active');
-      currentCategory = id
+      descriptionContainer.classList.toggle('active');
+      currentCategory = id;
+      descriptionContainer.style.maxHeight = descriptionContainerHeight;
     }
     else {
       currentCategory = '';
@@ -128,8 +133,8 @@
               {{/unless}}
             </div>
             <div class="coi-consent-banner__description-container" id="coi-consent-banner__description-container-{{this.cookie_type_label}}">
-              <div class="coi-consent-banner__category-description">{{{this.cookie_type_description}}}</div>
-                <div class="coi-consent-banner__found-cookies">
+              <div class="coi-consent-banner__category-description" id="description-{{this.cookie_type_label}}">{{{this.cookie_type_description}}}</div>
+                <div class="coi-consent-banner__found-cookies" id="found-cookies-{{this.cookie_type_label}}">
                   {{#if this.cookie_type_count}}
                     {{#each this.cookie_type_results}}
                       <div class="coi-consent-banner__cookie-details">

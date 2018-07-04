@@ -218,6 +218,7 @@
     width: 75%;
     background: white;
     z-index: 1;
+    transition: height 0.9s;
   }
 
   .coi-consent-banner__category-container:nth-child(1)
@@ -268,14 +269,15 @@
 /*Styles active on mobile version*/
 @media screen and (max-width: 760px) {
   .coi-consent-banner__description-container {
-    height: 0;
+    max-height: 0;
     width: 100%;
-    transition: height 0.9s;
+    transition: max-height 0.9s;
   }
 
   /* :checked */
   .coi-consent-banner__description-container.active {
     height: auto;
+    transition: max-height 0.9s;
   }
 
   .coi-consent-banner__about-owner-column {
