@@ -144,6 +144,7 @@
   background-color: #249723;
 }
 
+/*Styles active only on desktop version*/
 @media screen and (min-width: 760px) {
   .categories-list__single-category {
     flex-direction: row;
@@ -163,6 +164,7 @@
   }
 }
 
+/*Styles active only on mobile version*/
 @media screen and (max-width: 760px) {
   .categories-list__single-category {
     flex-direction: column;
