@@ -39,6 +39,7 @@
   display: flex;
   margin-right: 30px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .coi-category-consent__update-consent {
