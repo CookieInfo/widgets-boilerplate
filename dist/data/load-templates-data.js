@@ -36,6 +36,7 @@ window.LocalCookieInformation = (function () {
         show_details: 'Show details',
         hide_details: 'Hide details',
         cookies_overview: 'Cookie declaration',
+        category_consent_header: 'Cookie category consent settings',
         about_cookies: 'About cookies',
         cookie_name_header: 'Name',
         cookie_provider_header: 'Provider',
