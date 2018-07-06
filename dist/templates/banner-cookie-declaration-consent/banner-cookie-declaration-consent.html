@@ -53,8 +53,8 @@
     var descriptions = document.getElementsByClassName('coi-consent-banner__description-container');
     var category = document.getElementById(id);
     var descriptionContainer = document.getElementById('coi-consent-banner__description-container-' + id);
-    var description = document.getElementById('description-' + id);
-    var foundCookiesTable = document.getElementById('found-cookies-' + id);
+    var description = document.getElementById('coi-description-' + id);
+    var foundCookiesTable = document.getElementById('coi-found-cookies-' + id);
     var descriptionContainerHeight = description.scrollHeight + foundCookiesTable.scrollHeight + 'px';
 
     for (var i = 0; i < categoryNames.length; i++) {
@@ -133,8 +133,8 @@
               {{/unless}}
             </div>
             <div class="coi-consent-banner__description-container" id="coi-consent-banner__description-container-{{this.cookie_type_label}}">
-              <div class="coi-consent-banner__category-description" id="description-{{this.cookie_type_label}}">{{{this.cookie_type_description}}}</div>
-                <div class="coi-consent-banner__found-cookies" id="found-cookies-{{this.cookie_type_label}}">
+              <div class="coi-consent-banner__category-description" id="coi-description-{{this.cookie_type_label}}">{{{this.cookie_type_description}}}</div>
+                <div class="coi-consent-banner__found-cookies" id="coi-found-cookies-{{this.cookie_type_label}}">
                   {{#if this.cookie_type_count}}
                     {{#each this.cookie_type_results}}
                       <div class="coi-consent-banner__cookie-details">
