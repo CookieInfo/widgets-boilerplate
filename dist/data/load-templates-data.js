@@ -38,6 +38,7 @@ window.LocalCookieInformation = (function () {
         cookies_overview: 'Cookie declaration',
         category_consent_header: 'Cookie category consent settings',
         about_cookies: 'About cookies',
+        iab_info: 'IAB',
         cookie_name_header: 'Name',
         cookie_provider_header: 'Provider',
         cookie_purpose_header: 'Purpose',
