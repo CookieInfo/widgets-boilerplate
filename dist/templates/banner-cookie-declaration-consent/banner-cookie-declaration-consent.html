@@ -53,32 +53,32 @@
     if (element.classList) {
       element.classList.toggle(htmlClassName);
     } else {
-      var classes = element.className.split(" ");
-      var i = classes.indexOf(htmlClassName);
+      var elementsClasses = element.className.split(" ");
+      var classPlacement = elementsClasses.indexOf(htmlClassName);
 
-      if (i >= 0)
-        classes.splice(i, 1);
+      if (classPlacement >= 0)
+        elementsClasses.splice(classPlacement, 1);
       else
-        classes.push(htmlClassName);
-      element.className = classes.join(" ");
+        elementsClasses.push(htmlClassName);
+      element.className = elementsClasses.join(" ");
     }
   }
 
   function removeClass(element, htmlClassName) {
-    var classes = element.className.split(" ");
-    var i = classes.indexOf(htmlClassName);
+    var elementsClasses = element.className.split(" ");
+    var classPlacement = elementsClasses.indexOf(htmlClassName);
 
-    if (i >= 0) {
-      classes.splice(i, 1);
-      element.className = classes.join(" ");
+    if (classPlacement >= 0) {
+      elementsClasses.splice(classPlacement, 1);
+      element.className = elementsClasses.join(" ");
     }
   }
 
   function addClass(element, htmlClassName) {
-    var classes = element.className.split(" ");
+    var elementsClasses = element.className.split(" ");
 
-    classes.push(htmlClassName);
-    element.className = classes.join(" ");
+    elementsClasses.push(htmlClassName);
+    element.className = elementsClasses.join(" ");
   }
 
   var currentCategory = '';
