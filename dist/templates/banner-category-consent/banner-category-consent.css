@@ -3,9 +3,9 @@
 }
 
 .coi-consent-banner__consent-area {
+  flex: 1 0 0;
   justify-content: space-between;
   flex-direction: row;
-  flex: 1 0 0;
 }
 
 .coi-consent-banner__cookie-categories {
@@ -13,29 +13,13 @@
   justify-content: space-around;
 }
 
-/*Styles active only on IE9, IE10*/
-@media screen and (min-width:0\0) {
-  .coi-consent-banner__cookie-categories {
-    display: block;
-    float: left;
-    padding: 15px 0;
-  }
-}
-
 .coi-consent-banner__category-name {
   position: relative;
-  cursor: pointer;
+  width: 120px;
   font-size: 14px;
   line-height: 20px;
-  width: 120px;
   color: #272727;
-}
-
-/*Styles active only on IE9, IE10*/
-@media screen and (min-width:0\0) {
-  .coi-consent-banner__category-name {
-    padding: 2px 30px 0 30px;
-  }
+  cursor: pointer;
 }
 
 .coi-consent-banner__category-name:hover
@@ -52,13 +36,13 @@
 
 .coi-consent-banner__category-checkbox:checked
 ~ .coi-consent-banner__checkmark {
-  background-color: #249723;
   border: 2px solid #249723;
+  background-color: #249723;
 }
 
 .coi-consent-banner__category-checkbox:checked ~ .disabled {
-  background-color: #b2b2b2;
   border: 2px solid #b2b2b2;
+  background-color: #b2b2b2;
 }
 .coi-consent-banner__category-name:hover
 .coi-consent-banner__category-checkbox:checked
@@ -68,9 +52,9 @@
 
 .coi-consent-banner__category-checkbox {
   position: absolute;
+  display: none;
   opacity: 0;
   cursor: pointer;
-  display: none;
 }
 
 .coi-consent-banner__category-checkbox:checked
@@ -96,15 +80,15 @@
   left: 0;
   height: 17px;
   width: 17px;
-  background-color: #eee;
   border-radius: 2px;
   border: 2px solid #767676;
+  background-color: #eee;
 }
 
 .coi-consent-banner__checkmark:after {
-  content: "";
   position: absolute;
   display: none;
+  content: "";
 }
 
 .coi-consent-banner__summary {
@@ -140,3 +124,16 @@
     margin: 10px 10px 0 10px;
   }
 }
+
+/*Styles active only on IE9, IE10*/
+@media screen and (min-width:0\0) {
+  .coi-consent-banner__category-name {
+    padding: 2px 30px 0 30px;
+  }
+  .coi-consent-banner__cookie-categories {
+    display: block;
+    float: left;
+    padding: 15px 0;
+  }
+}
+
