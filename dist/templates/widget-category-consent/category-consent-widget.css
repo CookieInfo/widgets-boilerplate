@@ -179,3 +179,25 @@
     justify-content: center;
   }
 }
+
+/* IE9, IE10 */
+@media screen and (min-width:0\0) {
+  .categories-list__category-title-wrapper {
+    display: inline-block;
+    width: 25%;
+  }
+
+  .categories-list__description-wrapper {
+    width: 75%;
+    float: right;
+  }
+
+  .categories-list__single-category {
+    float: left;
+    width: 100%;
+  }
+
+  .categories-list__switch-container {
+    float: right;
+  }
+}
