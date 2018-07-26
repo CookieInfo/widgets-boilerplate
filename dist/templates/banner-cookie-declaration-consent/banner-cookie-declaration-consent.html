@@ -33,7 +33,7 @@
 
     for (var i = 0; i < indicators.length; i++) {
       removeClass(indicators[i], 'active');
-      removeClass(bottomColumns[i], 'active')
+      removeClass(bottomColumns[i], 'active');
       if (element.id == indicators[i].id) {
         addClass(indicators[i], 'active');
         addClass(bottomColumns[i], 'active');
@@ -93,11 +93,11 @@
     var descriptionContainerHeight = description.scrollHeight + foundCookiesTable.scrollHeight + 'px';
 
     for (var i = 0; i < categoryNames.length; i++) {
-      removeClass(categoryNames[i], 'active')
+      removeClass(categoryNames[i], 'active');
     }
 
     for (var i = 0; i < descriptions.length; i++) {
-      removeClass(descriptions[i], 'active')
+      removeClass(descriptions[i], 'active');
       descriptions[i].style.maxHeight = '0';
     }
 
@@ -132,8 +132,8 @@
       <div class="coi-consent-banner__summary-texts">
         <span class="summary-texts__title ">{{{banner_heading}}}</span>
         <span class="summary-texts__description">{{{banner_main_text}}}</span>
-        <span onclick="toggleDetails(this.id)" class="summary-texts__show-details" id="coiShowDetails">{{{translations.show_details}}}</span>
-        <span onclick="toggleDetails(this.id)" class="summary-texts__hide-details" id="coiHideDetails">{{{translations.hide_details}}}</span>
+        <span onclick="toggleDetails(this.id);" class="summary-texts__show-details" id="coiShowDetails">{{{translations.show_details}}}</span>
+        <span onclick="toggleDetails(this.id);" class="summary-texts__hide-details" id="coiHideDetails">{{{translations.hide_details}}}</span>
       </div>
     </div>
     <div class="coi-consent-banner__consent-area">
@@ -145,8 +145,8 @@
   </div>
   <div class="coi-consent-banner__bottom" id="coiConsentBannerBottom">
     <div class="coi-consent-banner__indicators-container">
-      <a onclick="toggleIndicator(this)" class="coi-consent-banner__indicator active" id="coiDeclarationIndicator">{{{translations.cookies_overview}}}</a>
-      <a onclick="toggleIndicator(this)" class="coi-consent-banner__indicator" id="coiAboutIndicator">{{{translations.about_cookies}}}</a>
+      <a onclick="toggleIndicator(this);" class="coi-consent-banner__indicator active" id="coiDeclarationIndicator">{{{translations.cookies_overview}}}</a>
+      <a onclick="toggleIndicator(this);" class="coi-consent-banner__indicator" id="coiAboutIndicator">{{{translations.about_cookies}}}</a>
     </div>
     <div class="coi-consent-banner__bottom-columns" id="coiBannerBottomColumns">
       <div class="coi-consent-banner__categories-wrapper active" id="coiConsentBannerCategoriesWrapper">
@@ -155,17 +155,17 @@
             <div class="coi-consent-banner__name-container">
               <span onclick="showDescription(this.id);" class="coi-consent-banner__category-name" id="{{this.cookie_type_label}}">
                 {{{this.cookie_type_name}}}</span>
-              {{#unless this.is_necessary}}
-                {{#unless this.is_unclassified}}
-                  <div class="coi-consent-banner__switch-container" id="switch-{{this.cookie_type_label}}">
-                    <label class="coi-consent-banner__switch">
-                      <input type="checkbox" class="coi-consent-banner__switch-checkbox" name="{{this.cookie_type_label}}" id="switch-{{this.cookie_type_label}}-slider"
-                             onclick="CookieInformation.changeCategoryConsentDecision('{{this.cookie_type_label}}');">
-                      <span class="coi-consent-banner__slider"></span>
-                    </label>
-                  </div>
+                {{#unless this.is_necessary}}
+                  {{#unless this.is_unclassified}}
+                    <div class="coi-consent-banner__switch-container" id="switch-{{this.cookie_type_label}}">
+                      <label class="coi-consent-banner__switch">
+                        <input type="checkbox" class="coi-consent-banner__switch-checkbox" name="{{this.cookie_type_label}}" id="switch-{{this.cookie_type_label}}-slider"
+                               onclick="CookieInformation.changeCategoryConsentDecision('{{this.cookie_type_label}}');">
+                        <span class="coi-consent-banner__slider"></span>
+                      </label>
+                    </div>
+                  {{/unless}}
                 {{/unless}}
-              {{/unless}}
             </div>
             <div class="coi-consent-banner__description-container" id="coi-consent-banner__description-container-{{this.cookie_type_label}}">
               <div class="coi-consent-banner__category-description" id="coi-description-{{this.cookie_type_label}}">{{{this.cookie_type_description}}}</div>
