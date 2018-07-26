@@ -1,17 +1,25 @@
 .coi-consent-banner__base {
-  -webkit-flex-direction: column-reverse;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .coi-consent-banner__consent-area {
   justify-content: space-between;
   flex-direction: row;
-  flex: 1;
+  flex: 1 0 0;
 }
 
 .coi-consent-banner__cookie-categories {
   display: flex;
   justify-content: space-around;
+}
+
+/*Styles active only on IE9, IE10*/
+@media screen and (min-width:0\0) {
+  .coi-consent-banner__cookie-categories {
+    display: block;
+    float: left;
+    padding: 15px 0;
+  }
 }
 
 .coi-consent-banner__category-name {
@@ -23,20 +31,27 @@
   color: #272727;
 }
 
+/*Styles active only on IE9, IE10*/
+@media screen and (min-width:0\0) {
+  .coi-consent-banner__category-name {
+    padding: 2px 30px 0 30px;
+  }
+}
+
 .coi-consent-banner__category-name:hover
-  .coi-consent-banner__category-checkbox
-  ~ .coi-consent-banner__checkmark {
+.coi-consent-banner__category-checkbox
+~ .coi-consent-banner__checkmark {
   background-color: #ccc;
 }
 
 .coi-consent-banner__category-name:hover
-  .coi-consent-banner__category-checkbox:checked
-  ~ .coi-consent-banner__checkmark {
+.coi-consent-banner__category-checkbox:checked
+~ .coi-consent-banner__checkmark {
   background-color: #249723;
 }
 
 .coi-consent-banner__category-checkbox:checked
-  ~ .coi-consent-banner__checkmark {
+~ .coi-consent-banner__checkmark {
   background-color: #249723;
   border: 2px solid #249723;
 }
@@ -46,8 +61,8 @@
   border: 2px solid #b2b2b2;
 }
 .coi-consent-banner__category-name:hover
-  .coi-consent-banner__category-checkbox:checked
-  ~ .disabled {
+.coi-consent-banner__category-checkbox:checked
+~ .disabled {
   background-color: #b2b2b2;
 }
 
@@ -59,7 +74,7 @@
 }
 
 .coi-consent-banner__category-checkbox:checked
-  ~ .coi-consent-banner__checkmark:after {
+~ .coi-consent-banner__checkmark:after {
   display: block;
 }
 
@@ -100,10 +115,15 @@
   cursor: default;
 }
 
+.coi-consent-banner__agree-button {
+  float: right;
+}
+
 /*Styles active on mobile version*/
 @media screen and (max-width: 550px) {
   .coi-consent-banner__consent-area {
     flex-direction: column;
+    min-height: 125px;
   }
 
   .coi-consent-banner__agree-button {

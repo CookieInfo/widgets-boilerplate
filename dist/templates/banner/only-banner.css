@@ -4,7 +4,6 @@
   width: 100%;
   max-height: 90%;
   border-top: 1px solid #e0e0e0;
-  overflow-y: hidden;
   font-family: "Roboto";
   background-color: #fdfdfd;
   z-index: 10000;
@@ -21,6 +20,7 @@
   align-items: center;
   text-align: center;
   padding: 0 30px;
+  min-height: 55px;
 }
 
 .coi-consent-banner__agree-button {
@@ -40,6 +40,16 @@
   margin: 10px 0;
 }
 
+/*Styles active only on IE9, IE10*/
+@media screen and (min-width:0\0) {
+  .coi-consent-banner__agree-button {
+    padding: 0 30px
+  }
+  .coi-consent-banner__decline {
+    padding: 0 30px;
+  }
+}
+
 .coi-consent-banner__agree-button:hover {
   background-color: #249723;
 }
@@ -57,18 +67,24 @@
 .coi-consent-banner__summary {
   box-sizing: border-box;
   display: flex;
+  align-items: flex-start;
   opacity: 0.9;
   padding: 30px;
   background-color: #f5f5f5;
   line-height: 16px;
+  overflow: hidden;
 }
 
 .coi-consent-banner__summary-texts {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+}
+
+.summary-texts__description {
+  float: left;
 }
 
 .summary-texts__title {
+  float: left;
   color: rgba(0, 0, 0, 0.87);
   font-size: 21px;
   font-weight: 500;
@@ -76,6 +92,7 @@
 }
 
 .summary-texts__show-details {
+  float: left;
   font-size: 14px;
   cursor: pointer;
   color: #000000;
@@ -87,10 +104,13 @@
 @media screen and (min-width: 700px) {
   .coi-consent-banner__base {
     display: inline-flex;
+    flex-direction: row-reverse;
     width: 100%;
+    margin: 0;
   }
 
   .coi-consent-banner__consent-area {
+    display: flex;
     flex-direction: column;
     border-right: 1px solid #e0e0e0;
   }
@@ -100,11 +120,20 @@
   }
 
   .coi-consent-banner__consent-area {
-    flex: 1 0 0;
+    display: flex;
+    /*flex: 1 0 0;*/
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0px;
+    /*width: 25%;*/
   }
 
   .coi-consent-banner__summary {
-    flex: 3 0 0;
+    display: flex;
+    flex-grow: 3;
+    flex-shrink: 0;
+    flex-basis: 0px;
+    /*align-items: flex-start;*/
   }
 }
 

@@ -5,7 +5,7 @@
     var coiShowDetails = document.getElementById('coiShowDetails');
     var coiHideDetails = document.getElementById('coiHideDetails');
     var coiConsentBannerBottom = document.getElementById('coiConsentBannerBottom');
-    var isMobile = window.matchMedia('(max-width: 760px)').matches;
+    var isMobile = (navigator.userAgent.indexOf("MSIE") >= 0) ? '' : window.matchMedia('(max-width: 760px)').matches;
 
     if (id === 'coiShowDetails') {
       coiConsentBannerBottom.style.maxHeight = coiConsentBannerBottom.scrollHeight
@@ -15,7 +15,7 @@
       coiHideDetails.style.display = 'block';
 
       if (!isMobile) {
-        document.getElementById('cookie_cat_necessary').classList.toggle('active');
+        toggleClass(document.getElementById('cookie_cat_necessary'), 'active');
       }
     }
     else {
@@ -28,20 +28,50 @@
   }
 
   function toggleIndicator(element) {
-    if (element.id === 'coiDeclarationIndicator') {
-      document.getElementById('coiConsentBannerAboutOwnerColumn').style.display = 'none';
-      document.getElementById('coiConsentBannerCategoriesWrapper').style.display = 'block';
+    var indicators = document.getElementsByClassName('coi-consent-banner__indicator');
+    var bottomColumns = document.getElementById('coiBannerBottomColumns').children;
 
-      element.classList.toggle('active');
-      document.getElementById('coiAboutIndicator').classList.remove('active');
+    for (var i = 0; i < indicators.length; i++) {
+      removeClass(indicators[i], 'active');
+      removeClass(bottomColumns[i], 'active')
+      if (element.id == indicators[i].id) {
+        addClass(indicators[i], 'active');
+        addClass(bottomColumns[i], 'active');
+      }
     }
-    else if (element.id === 'coiAboutIndicator') {
-      document.getElementById('coiConsentBannerAboutOwnerColumn').style.display = 'flex';
-      document.getElementById('coiConsentBannerCategoriesWrapper').style.display = 'none';
+  }
 
-      element.classList.toggle('active');
-      document.getElementById('coiDeclarationIndicator').classList.remove('active');
+  //  Custom functions below for class toggling, adding, removing, because <IE10 doesn't support classList
+  function toggleClass(element, htmlClassName) {
+    if (element.classList) {
+      element.classList.toggle(htmlClassName);
+    } else {
+      var classes = element.className.split(" ");
+      var i = classes.indexOf(htmlClassName);
+
+      if (i >= 0)
+        classes.splice(i, 1);
+      else
+        classes.push(htmlClassName);
+      element.className = classes.join(" ");
     }
+  }
+
+  function removeClass(element, htmlClassName) {
+    var classes = element.className.split(" ");
+    var i = classes.indexOf(htmlClassName);
+
+    if (i >= 0) {
+      classes.splice(i, 1);
+      element.className = classes.join(" ");
+    }
+  }
+
+  function addClass(element, htmlClassName) {
+    var classes = element.className.split(" ");
+
+    classes.push(htmlClassName);
+    element.className = classes.join(" ");
   }
 
   var currentCategory = '';
@@ -56,17 +86,17 @@
     var descriptionContainerHeight = description.scrollHeight + foundCookiesTable.scrollHeight + 'px';
 
     for (var i = 0; i < categoryNames.length; i++) {
-      categoryNames[i].classList.remove('active');
+      removeClass(categoryNames[i], 'active')
     }
 
     for (var i = 0; i < descriptions.length; i++) {
-      descriptions[i].classList.remove('active');
+      removeClass(descriptions[i], 'active')
       descriptions[i].style.maxHeight = '0';
     }
 
     if (id !== currentCategory) {
-      category.classList.toggle('active');
-      descriptionContainer.classList.toggle('active');
+      toggleClass(category, 'active');
+      toggleClass(descriptionContainer, 'active');
       currentCategory = id;
       descriptionContainer.style.maxHeight = descriptionContainerHeight;
     }
@@ -90,12 +120,6 @@
 <div class="coi-consent-banner" id="coiConsentBanner">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <div class="coi-consent-banner__base" id="coiConsentBannerBase">
-    <div class="coi-consent-banner__consent-area">
-      <button onclick="CookieInformation.submitAllCategories();" class="coi-consent-banner__agree-button">
-        {{{accept_cookies_button}}}
-      </button>
-      <span class="coi-consent-banner__decline" onclick="CookieConsent.dialog.submitDecline()">{{{decline_cookies_button}}}</span>
-    </div>
     <div class="coi-consent-banner__summary">
       <div class="coi-consent-banner__summary-texts">
         <span class="summary-texts__title ">{{{banner_heading}}}</span>
@@ -104,14 +128,20 @@
         <span onclick="toggleDetails(this.id)" class="summary-texts__hide-details" id="coiHideDetails">{{{translations.hide_details}}}</span>
       </div>
     </div>
+    <div class="coi-consent-banner__consent-area">
+      <button onclick="CookieInformation.submitAllCategories();" class="coi-consent-banner__agree-button">
+        {{{accept_cookies_button}}}
+      </button>
+      <span class="coi-consent-banner__decline" onclick="CookieConsent.dialog.submitDecline()">{{{decline_cookies_button}}}</span>
+    </div>
   </div>
   <div class="coi-consent-banner__bottom" id="coiConsentBannerBottom">
     <div class="coi-consent-banner__indicators-container">
       <a onclick="toggleIndicator(this)" class="coi-consent-banner__indicator active" id="coiDeclarationIndicator">{{{translations.cookies_overview}}}</a>
       <a onclick="toggleIndicator(this)" class="coi-consent-banner__indicator" id="coiAboutIndicator">{{{translations.about_cookies}}}</a>
     </div>
-    <div class="coi-consent-banner__bottom-columns">
-      <div class="coi-consent-banner__categories-wrapper" id="coiConsentBannerCategoriesWrapper">
+    <div class="coi-consent-banner__bottom-columns" id="coiBannerBottomColumns">
+      <div class="coi-consent-banner__categories-wrapper active" id="coiConsentBannerCategoriesWrapper">
         {{#each cookie_categories}}
           <div class="coi-consent-banner__category-container">
             <div class="coi-consent-banner__name-container">

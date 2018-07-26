@@ -1,7 +1,8 @@
 .coi-consent-banner__switch-container {
-  position: absolute;
-  right: 0;
+  position: relative;
+  float: right;
   cursor: pointer;
+  padding-top: 20px;
 }
 
 .coi-consent-banner__switch {
@@ -64,14 +65,20 @@
 }
 
 .coi-consent-banner__bottom-bar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  display: none;
+}
+
+.coi-consent-banner__bottom-bar.active {
+  display: inline-block;
   height: 59px;
+  width: 100%;
   border-top: 1px solid rgba(0,0,0,0.24);
 }
 
 .bottom-bar__update-consent {
+  height: 59px;
+  line-height: 59px;
+  float: right;
   color: #000000;
   font-size: 15px;
   padding: 0 30px;

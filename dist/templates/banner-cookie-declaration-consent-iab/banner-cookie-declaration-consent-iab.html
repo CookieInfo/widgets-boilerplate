@@ -7,7 +7,7 @@
     var coiShowDetails = document.getElementById('coiShowDetails');
     var coiHideDetails = document.getElementById('coiHideDetails');
     var coiConsentBannerBottom = document.getElementById('coiConsentBannerBottom');
-    var isMobile = window.matchMedia('(max-width: 760px)').matches;
+    var isMobile = (navigator.userAgent.indexOf("MSIE") >= 0) ? '' : window.matchMedia('(max-width: 760px)').matches;
 
     if (id === 'coiShowDetails') {
       coiConsentBannerBottom.style.maxHeight = coiConsentBannerBottom.scrollHeight
@@ -17,7 +17,7 @@
       coiHideDetails.style.display = 'block';
 
       if (!isMobile) {
-        document.getElementById('coi-consent-banner__category-expander-cookie_cat_necessary').checked = true;
+        toggleClass(document.getElementById('cookie_cat_necessary'), 'active');
       }
     }
     else {
@@ -30,45 +30,83 @@
   }
 
   function toggleIndicator(element) {
-    if (element.id === 'coiDeclarationIndicator') {
-      document.getElementById('coiConsentBannerAboutOwnerColumn').style.display = 'none';
-      document.getElementById('coiConsentBannerCategoriesWrapper').style.display = 'block';
-      document.getElementById('coi-consent-banner__bottom-bar').style.display = 'flex';
-      document.getElementById('coiConsentBannerIABColumn').style.display = 'none';
+    var indicators = document.getElementsByClassName('coi-consent-banner__indicator');
+    var bottomColumns = document.getElementById('coiBannerBottomColumns').children;
 
-      element.classList.toggle('active');
-      document.getElementById('coiIABIndicator').classList.remove('active');
-      document.getElementById('coiAboutIndicator').classList.remove('active');
+    for (var i = 0; i < indicators.length; i++) {
+      removeClass(indicators[i], 'active');
+      removeClass(bottomColumns[i], 'active')
+      if (element.id == indicators[i].id) {
+        addClass(indicators[i], 'active');
+        addClass(bottomColumns[i], 'active');
+      }
     }
-    else if (element.id === 'coiAboutIndicator') {
-      document.getElementById('coiConsentBannerAboutOwnerColumn').style.display = 'flex';
-      document.getElementById('coiConsentBannerCategoriesWrapper').style.display = 'none';
-      document.getElementById('coi-consent-banner__bottom-bar').style.display = 'none';
-      document.getElementById('coiConsentBannerIABColumn').style.display = 'none';
 
-      element.classList.toggle('active');
-      document.getElementById('coiDeclarationIndicator').classList.remove('active');
-      document.getElementById('coiIABIndicator').classList.remove('active');
+    if (element.id == 'coiDeclarationIndicator') {
+      addClass(document.getElementById('coi-consent-banner__bottom-bar'), 'active');
     }
-    else if (element.id === 'coiIABIndicator') {
-      document.getElementById('coiConsentBannerIABColumn').style.display = 'block';
-      document.getElementById('coiConsentBannerAboutOwnerColumn').style.display = 'none';
-      document.getElementById('coiConsentBannerCategoriesWrapper').style.display = 'none';
-      document.getElementById('coi-consent-banner__bottom-bar').style.display = 'none';
-
-      element.classList.toggle('active');
-      document.getElementById('coiDeclarationIndicator').classList.remove('active');
-      document.getElementById('coiAboutIndicator').classList.remove('active');
+    else {
+      removeClass(document.getElementById('coi-consent-banner__bottom-bar'), 'active');
     }
   }
 
-  function showDescription(event, id) {
-    var isMobile = window.matchMedia('(max-width: 760px)').matches;
-    var categoryCheckbox = document.getElementById(id);
+  //  Custom functions below for class toggling, adding, removing, because <IE10 doesn't support classList
+  function toggleClass(element, htmlClassName) {
+      var classes = element.className.split(" ");
+      var i = classes.indexOf(htmlClassName);
 
-    if (isMobile) {
-      categoryCheckbox.checked = !categoryCheckbox.checked;
-      event.preventDefault();
+      if (i >= 0)
+        classes.splice(i, 1);
+      else
+        classes.push(htmlClassName);
+      element.className = classes.join(" ");
+  }
+
+  function removeClass(element, htmlClassName) {
+    var classes = element.className.split(" ");
+    var i = classes.indexOf(htmlClassName);
+
+    if (i >= 0) {
+      classes.splice(i, 1);
+      element.className = classes.join(" ");
+    }
+  }
+
+  function addClass(element, htmlClassName) {
+    var classes = element.className.split(" ");
+
+    classes.push(htmlClassName);
+    element.className = classes.join(" ");
+  }
+
+  var currentCategory = '';
+
+  function showDescription(id) {
+    var categoryNames = document.getElementsByClassName('coi-consent-banner__category-name');
+    var descriptions = document.getElementsByClassName('coi-consent-banner__description-container');
+    var category = document.getElementById(id);
+    var descriptionContainer = document.getElementById('coi-consent-banner__description-container-' + id);
+    var description = document.getElementById('coi-description-' + id);
+    var foundCookiesTable = document.getElementById('coi-found-cookies-' + id);
+    var descriptionContainerHeight = description.scrollHeight + foundCookiesTable.scrollHeight + 'px';
+
+    for (var i = 0; i < categoryNames.length; i++) {
+      removeClass(categoryNames[i], 'active')
+    }
+
+    for (var i = 0; i < descriptions.length; i++) {
+      removeClass(descriptions[i], 'active')
+      descriptions[i].style.maxHeight = '0';
+    }
+
+    if (id !== currentCategory) {
+      toggleClass(category, 'active');
+      toggleClass(descriptionContainer, 'active');
+      currentCategory = id;
+      descriptionContainer.style.maxHeight = descriptionContainerHeight;
+    }
+    else {
+      currentCategory = '';
     }
   }
 
@@ -84,16 +122,11 @@
 </script>
 <link rel="stylesheet" href="/templates/banner/only-banner.css">
 <link rel="stylesheet" href="/templates/banner-cookie-declaration/banner-cookie-declaration.css">
+<link rel="stylesheet" href="/templates/banner-cookie-declaration-consent/banner-cookie-declaration-consent.css">
 <link rel="stylesheet" href="/templates/banner-cookie-declaration-consent-iab/banner-cookie-declaration-consent-iab.css">
 <div class="coi-consent-banner" id="coiConsentBanner">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <div class="coi-consent-banner__base" id="coiConsentBannerBase">
-        <div class="coi-consent-banner__consent-area">
-            <button onclick="CookieInformation.submitAllCategories();" class="coi-consent-banner__agree-button">
-                {{accept_cookies_button}}
-            </button>
-            <span class="coi-consent-banner__decline" onclick="CookieConsent.dialog.submitDecline()">{{{decline_cookies_button}}}</span>
-        </div>
         <div class="coi-consent-banner__summary">
             <div class="coi-consent-banner__summary-texts">
                 <span class="summary-texts__title ">{{{banner_heading}}}</span>
@@ -102,6 +135,12 @@
                 <span onclick="toggleDetails(this.id)" class="summary-texts__hide-details" id="coiHideDetails">{{{translations.hide_details}}}</span>
             </div>
         </div>
+        <div class="coi-consent-banner__consent-area">
+            <button onclick="CookieInformation.submitAllCategories();" class="coi-consent-banner__agree-button">
+                {{accept_cookies_button}}
+            </button>
+            <span class="coi-consent-banner__decline" onclick="CookieConsent.dialog.submitDecline()">{{{decline_cookies_button}}}</span>
+        </div>
     </div>
     <div class="coi-consent-banner__bottom" id="coiConsentBannerBottom">
         <div class="coi-consent-banner__indicators-container">
@@ -109,21 +148,13 @@
             <a onclick="toggleIndicator(this)" class="coi-consent-banner__indicator" id="coiAboutIndicator">{{{translations.about_cookies}}}</a>
             <a onclick="toggleIndicator(this)" class="coi-consent-banner__indicator" id="coiIABIndicator">{{{translations.iab_info}}}</a>
         </div>
-        <div class="coi-consent-banner__bottom-columns">
-            <div class="coi-consent-banner__categories-wrapper" id="coiConsentBannerCategoriesWrapper">
+        <div class="coi-consent-banner__bottom-columns" id="coiBannerBottomColumns">
+            <div class="coi-consent-banner__categories-wrapper active" id="coiConsentBannerCategoriesWrapper">
                 {{#each cookie_categories}}
                 <div class="coi-consent-banner__category-container">
-                    {{#if this.is_necessary}}
-                    <input class="coi-consent-banner__category-expander" id="coi-consent-banner__category-expander-{{this.cookie_type_label}}"
-                           type="radio" name="tabs">
-                    {{/if}}
-                    {{#unless this.is_necessary}}
-                    <input class="coi-consent-banner__category-expander" id="coi-consent-banner__category-expander-{{this.cookie_type_label}}"
-                           type="radio" name="tabs">
-                    {{/unless}}
                     <div class="coi-consent-banner__name-container">
-                        <label onclick="showDescription(event, this.htmlFor);" for="coi-consent-banner__category-expander-{{this.cookie_type_label}}" class="coi-consent-banner__category-name coi-consent-banner__category-name--slider">
-                            {{{this.cookie_type_name}}}</label>
+              <span onclick="showDescription(this.id);" class="coi-consent-banner__category-name" id="{{this.cookie_type_label}}">
+                {{{this.cookie_type_name}}}</span>
                         {{#unless this.is_necessary}}
                         {{#unless this.is_unclassified}}
                         <div class="coi-consent-banner__switch-container" id="switch-{{this.cookie_type_label}}">
@@ -137,8 +168,8 @@
                         {{/unless}}
                     </div>
                     <div class="coi-consent-banner__description-container" id="coi-consent-banner__description-container-{{this.cookie_type_label}}">
-                        <div class="coi-consent-banner__category-description">{{{this.cookie_type_description}}}</div>
-                        <div class="coi-consent-banner__found-cookies">
+                        <div class="coi-consent-banner__category-description" id="coi-description-{{this.cookie_type_label}}">{{{this.cookie_type_description}}}</div>
+                        <div class="coi-consent-banner__found-cookies" id="coi-found-cookies-{{this.cookie_type_label}}">
                             {{#if this.cookie_type_count}}
                             {{#each this.cookie_type_results}}
                             <div class="coi-consent-banner__cookie-details">
@@ -184,7 +215,7 @@
             </div>
             <div class="coi-consent-banner-iab-column" id="coiConsentBannerIABColumn"></div>
         </div>
-        <div class="coi-consent-banner__bottom-bar" id="coi-consent-banner__bottom-bar">
+        <div class="coi-consent-banner__bottom-bar active" id="coi-consent-banner__bottom-bar">
             <span onclick="CookieInformation.submitConsent()" class="bottom-bar__update-consent">{{{translations.update_consent_button}}}</span>
         </div>
     </div>
