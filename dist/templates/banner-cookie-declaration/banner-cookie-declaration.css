@@ -81,6 +81,10 @@
   cursor: pointer;
 }
 
+.coi-consent-banner__name-container:hover .coi-consent-banner__category-name {
+  color: #249723;
+}
+
 .coi-consent-banner__category-name:hover {
   color: #249723;
 }
