@@ -1,43 +1,43 @@
 .coi-consent-banner {
-  bottom: 0;
   position: fixed;
+  bottom: 0;
+  z-index: 10000;
+  box-sizing: border-box;
   width: 100%;
   max-height: 90%;
   border-top: 1px solid #e0e0e0;
-  overflow-y: hidden;
-  font-family: "Roboto";
   background-color: #fdfdfd;
-  z-index: 10000;
+  color: rgba(0, 0, 0, 0.54);
+  font-family: "Roboto";
   font-size: 14px;
   line-height: 16px;
-  color: rgba(0, 0, 0, 0.54);
-  box-sizing: border-box;
 }
 
 .coi-consent-banner__consent-area {
-  font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  min-height: 55px;
   padding: 0 30px;
+  font-size: 14px;
 }
 
 .coi-consent-banner__agree-button {
   min-width: 119px;
   min-height: 36px;
-  background-color: #249723;
-  color: white;
+  align-content: flex-end;
+  margin: 10px 0;
   border-radius: 2px;
   border: none;
-  cursor: pointer;
-  align-content: flex-end;
+  background-color: #249723;
+  color: white;
   font-size: 14px;
   letter-spacing: 0.5px;
   line-height: 16px;
   font-weight: 400;
   text-transform: uppercase;
-  margin: 10px 0;
+  cursor: pointer;
 }
 
 .coi-consent-banner__agree-button:hover {
@@ -55,20 +55,26 @@
 }
 
 .coi-consent-banner__summary {
-  box-sizing: border-box;
   display: flex;
-  opacity: 0.9;
+  align-items: flex-start;
+  overflow: hidden;
+  box-sizing: border-box;
   padding: 30px;
+  opacity: 0.9;
   background-color: #f5f5f5;
   line-height: 16px;
 }
 
 .coi-consent-banner__summary-texts {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+}
+
+.summary-texts__description {
+  float: left;
 }
 
 .summary-texts__title {
+  float: left;
   color: rgba(0, 0, 0, 0.87);
   font-size: 21px;
   font-weight: 500;
@@ -76,21 +82,25 @@
 }
 
 .summary-texts__show-details {
-  font-size: 14px;
-  cursor: pointer;
-  color: #000000;
+  float: left;
   margin-top: 5px;
+  font-size: 14px;
+  color: #000000;
   text-decoration: none;
+  cursor: pointer;
 }
 
 /*Styles active on desktop version*/
 @media screen and (min-width: 700px) {
   .coi-consent-banner__base {
     display: inline-flex;
+    flex-direction: row-reverse;
     width: 100%;
+    margin: 0;
   }
 
   .coi-consent-banner__consent-area {
+    display: flex;
     flex-direction: column;
     border-right: 1px solid #e0e0e0;
   }
@@ -100,10 +110,12 @@
   }
 
   .coi-consent-banner__consent-area {
+    display: flex;
     flex: 1 0 0;
   }
 
   .coi-consent-banner__summary {
+    display: flex;
     flex: 3 0 0;
   }
 }
@@ -127,5 +139,15 @@
 
   .coi-consent-banner__summary {
     flex: 1;
+  }
+}
+
+/*Styles active only on IE9, IE10*/
+@media screen and (min-width:0\0) {
+  .coi-consent-banner__agree-button {
+    padding: 0 30px
+  }
+  .coi-consent-banner__decline {
+    padding: 0 30px;
   }
 }
