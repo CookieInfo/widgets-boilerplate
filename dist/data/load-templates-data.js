@@ -1,25 +1,25 @@
-'use strict'
+'use strict';
 
 window.LocalCookieInformation = function () {
-  var _templatePath = null
+  var _templatePath = null;
 
   function loadSampleTemplate (pathToTemplate, callback) {
 
-    var templateAjax = new XMLHttpRequest()
+    var templateAjax = new XMLHttpRequest();
 
-    templateAjax.open('GET', pathToTemplate)
-    templateAjax.send()
+    templateAjax.open('GET', pathToTemplate);
+    templateAjax.send();
     templateAjax.onreadystatechange = function (data) {
       if (templateAjax.readyState == 4 && (templateAjax.status == 200 || templateAjax.status == 0)) {
         var template, jsElement, js, html
-        var tempElement = document.createElement('div')
-        template = templateAjax.responseText
-        tempElement.innerHTML = template
-        jsElement = tempElement.getElementsByTagName('script')[0]
-        js = jsElement ? jsElement.innerHTML : ''
+        var tempElement = document.createElement('div');
+        template = templateAjax.responseText;
+        tempElement.innerHTML = template;
+        jsElement = tempElement.getElementsByTagName('script')[0];
+        js = jsElement ? jsElement.innerHTML : '';
 
-        html = window.Handlebars.compile(template)(getTemplateData())
-        callback(html, js)
+        html = window.Handlebars.compile(template)(getTemplateData());
+        callback(html, js);
       }
     }
   }
@@ -94,8 +94,8 @@ window.LocalCookieInformation = function () {
   }
 
   function generateRandomCookieData () {
-    var lengthOfText = Math.random() * 200 + 20
-    var sampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra faucibus suscipit. Curabitur lobortis dui in diam iaculis\n    blandit. Vestibulum sagittis feugiat purus, vulputate pretium sem. Aliquam egestas vehicula mollis. Vivamus sit amet\n    arcu sed augue mattis vestibulum'
+    var lengthOfText = Math.random() * 200 + 20;
+    var sampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra faucibus suscipit. Curabitur lobortis dui in diam iaculis\n    blandit. Vestibulum sagittis feugiat purus, vulputate pretium sem. Aliquam egestas vehicula mollis. Vivamus sit amet\n    arcu sed augue mattis vestibulum';
     return {
       name: 'ASP.NET_SessionId',
       domain: 'www.example.org',
@@ -105,14 +105,14 @@ window.LocalCookieInformation = function () {
   }
 
   function setTemplatePath (templatePath) {
-    _templatePath = templatePath
+    _templatePath = templatePath;
   }
 
   function getTemplatePath () {
     if (_templatePath === null) {
-      throw new Error('No template path defined')
+      throw new Error('No template path defined');
     }
-    return _templatePath
+    return _templatePath;
   }
 
   return {
