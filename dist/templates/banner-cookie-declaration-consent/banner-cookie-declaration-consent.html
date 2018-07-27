@@ -91,6 +91,8 @@
     var description = document.getElementById('coi-description-' + id);
     var foundCookiesTable = document.getElementById('coi-found-cookies-' + id);
     var descriptionContainerHeight = description.scrollHeight + foundCookiesTable.scrollHeight + 'px';
+    var isMobile = (navigator.userAgent.indexOf("MSIE") >= 0) ? '' : window.matchMedia('(max-width: 760px)').matches;
+
 
     for (var i = 0; i < categoryNames.length; i++) {
       removeClass(categoryNames[i], 'active');
@@ -108,6 +110,11 @@
       descriptionContainer.style.maxHeight = descriptionContainerHeight;
     }
     else {
+      if (!isMobile) {
+        addClass(category, 'active');
+        addClass(descriptionContainer, 'active');
+        descriptionContainer.style.maxHeight = descriptionContainerHeight;
+      }
       currentCategory = '';
     }
   }
