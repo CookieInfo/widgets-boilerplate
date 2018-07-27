@@ -11,20 +11,20 @@
 }
 
 .coi-cookie-declaration__cookies-info {
-  margin-top: 40px;
   display: flex;
-  border-bottom: 1px solid #e0e0e0;
+  margin-top: 40px;
   padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .cookies-info__about-owner {
   display: flex;
+  flex-direction: column;
   margin-right: 2%;
-  font-weight: 500;
   min-width: 210px;
   color: #757575;
+  font-weight: 500;
   font-size: 14px;
-  flex-direction: column;
 }
 
 .cookies-info__last-scan {
@@ -39,17 +39,17 @@
 }
 
 .cookies-info__last-scan-date {
-  height: 20px;
-  border-radius: 3px;
-  color: rgba(0, 0, 0, 0.54);
-  background-color: #ebebeb;
-  font-size: 12px;
   display: table;
   align-items: center;
   text-align: center;
+  height: 20px;
+  max-width: 140px;
   margin-top: 10px;
   padding: 0 14px;
-  max-width: 140px;
+  border-radius: 3px;
+  background-color: #ebebeb;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
   line-height: 20px;
 }
 
@@ -105,8 +105,8 @@
 }
 
 .cookie-details__detail-container {
-  font-size: 13px;
   padding: 0 10px;
+  font-size: 13px;
 }
 
 .cookies-list__cookie-categories {
@@ -117,10 +117,10 @@
 
 .cookies-list__category-description {
   padding: 50px 0 35px 0;
+  box-sizing: border-box;
+  min-height: 90px;
   color: #757575;
   font-size: 14px;
-  min-height: 90px;
-  box-sizing: border-box;
   font-weight: 500;
 }
 
@@ -147,17 +147,17 @@
   }
 
   .cookie-details__detail-container-name {
-    text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
     width:15%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .cookie-details__detail-container-provider {
-    text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
     width:25%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .cookie-details__detail-container-purpose {
@@ -177,5 +177,42 @@
 
   .coi-consent-banner__cookie-details {
     flex-direction: column;
+  }
+}
+
+/* IE9, IE10 */
+@media screen and (min-width:0\0) {
+  .categories-list__category-title-wrapper {
+    display: inline-block;
+    width: 25%;
+  }
+
+  .categories-list__description-wrapper {
+    float: right;
+    width: 75%;
+  }
+
+  .categories-list__single-category {
+    float: left;
+    width: 100%;
+  }
+
+  .categories-list__switch-container {
+    float: right;
+  }
+
+  .coi-consent-banner__cookie-details {
+    overflow: hidden;
+  }
+
+  .cookie-details__detail-container {
+    float: left;
+    padding: 0;
+  }
+
+  .cookies-list__category-name {
+    float: left;
+    padding: 30px 0;
+    width: 100%;
   }
 }

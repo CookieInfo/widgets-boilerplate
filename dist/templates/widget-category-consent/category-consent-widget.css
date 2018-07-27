@@ -12,9 +12,9 @@
 }
 
 .coi-category-categories-list {
-  margin-top: 50px;
   display: flex;
   flex-flow: column;
+  margin-top: 50px;
 }
 
 .categories-list__single-category {
@@ -30,10 +30,10 @@
 }
 
 .coi-category-consent__decison {
-  margin-bottom: 40px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 .coi-category-consent__select-all {
@@ -46,32 +46,32 @@
 .coi-category-consent__update-consent {
   min-width: 119px;
   min-height: 36px;
-  background-color: #249723;
-  color: white;
   border-radius: 2px;
   border: none;
-  cursor: pointer;
+  background-color: #249723;
+  color: white;
   font-size: 14px;
   letter-spacing: 0.5px;
   line-height: 16px;
   font-weight: 400;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .categories-list__category-title-wrapper {
   display: inline-flex;
-  justify-content: space-between;
   align-items: baseline;
+  justify-content: space-between;
   font-size: 20px;
   font-weight: 500;
 }
 
 .categories-list__category-title {
   display: flex;
+  min-width: 150px;
   font-size: 20px;
   font-weight: 500;
   word-break: break-all;
-  min-width: 150px;
 }
 
 .categories-list__description-wrapper {
@@ -104,27 +104,27 @@
 
 .switch-container__slider {
   position: absolute;
-  cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: #bdbdbd;
-  transition: 0.4s;
   border-radius: 34px;
+  transition: 0.4s;
+  cursor: pointer;
 }
 
 .switch-container__slider:before {
   position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
   left: -3px;
   bottom: -3px;
-  background-color: #f5f5f5;
-  transition: 0.4s;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
+  background-color: #f5f5f5;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+  transition: 0.4s;
+  content: "";
 }
 
 .switch-container__slider:after {
@@ -140,10 +140,10 @@
 }
 
 .switch-container__category-checkbox:checked + .switch-container__slider:before {
+  background-color: #249723;
   -webkit-transform: translateX(20px);
   -ms-transform: translateX(20px);
   transform: translateX(20px);
-  background-color: #249723;
 }
 
 /*Styles active only on desktop version*/
@@ -177,5 +177,27 @@
 
   .coi-category-consent__decison {
     justify-content: center;
+  }
+}
+
+/* IE9, IE10 */
+@media screen and (min-width:0\0) {
+  .categories-list__category-title-wrapper {
+    display: inline-block;
+    width: 25%;
+  }
+
+  .categories-list__description-wrapper {
+    float: right;
+    width: 75%;
+  }
+
+  .categories-list__single-category {
+    float: left;
+    width: 100%;
+  }
+
+  .categories-list__switch-container {
+    float: right;
   }
 }
