@@ -86,11 +86,13 @@
   function showDescription(id) {
     var categoryNames = document.getElementsByClassName('coi-consent-banner__category-name');
     var descriptions = document.getElementsByClassName('coi-consent-banner__description-container');
-    var category = document.getElementById(id);
+    var category = document.getElementById('coi-category-' + id);
     var descriptionContainer = document.getElementById('coi-consent-banner__description-container-' + id);
     var description = document.getElementById('coi-description-' + id);
     var foundCookiesTable = document.getElementById('coi-found-cookies-' + id);
     var descriptionContainerHeight = description.scrollHeight + foundCookiesTable.scrollHeight + 'px';
+    var isMobile = (navigator.userAgent.indexOf("MSIE") >= 0) ? '' : window.matchMedia('(max-width: 760px)').matches;
+
 
     for (var i = 0; i < categoryNames.length; i++) {
       removeClass(categoryNames[i], 'active');
@@ -108,6 +110,11 @@
       descriptionContainer.style.maxHeight = descriptionContainerHeight;
     }
     else {
+      if (!isMobile) {
+        addClass(category, 'active');
+        addClass(descriptionContainer, 'active');
+        descriptionContainer.style.maxHeight = descriptionContainerHeight;
+      }
       currentCategory = '';
     }
   }
@@ -153,8 +160,8 @@
       <div class="coi-consent-banner__categories-wrapper active" id="coiConsentBannerCategoriesWrapper">
         {{#each cookie_categories}}
           <div class="coi-consent-banner__category-container">
-            <div class="coi-consent-banner__name-container">
-              <span onclick="showDescription(this.id);" class="coi-consent-banner__category-name" id="{{this.cookie_type_label}}">
+            <div class="coi-consent-banner__name-container" id="{{this.cookie_type_label}}" onclick="showDescription(this.id);">
+              <span class="coi-consent-banner__category-name" id="coi-category-{{this.cookie_type_label}}">
                 {{{this.cookie_type_name}}}</span>
                 {{#unless this.is_necessary}}
                   {{#unless this.is_unclassified}}
