@@ -1,7 +1,7 @@
 {
   "name": "cookieinformation-widgets-boilerplate",
   "description": "Provides ready to use Cookie Information templates ",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": "https://github.com/CookieInfo/widgets-boilerplate",
   "main": "index.html",
   "scripts": {
