@@ -71,10 +71,12 @@
 
 .summary-texts__description {
   float: left;
+  width: 100%;
 }
 
 .summary-texts__title {
   float: left;
+  width: 100%;
   color: rgba(0, 0, 0, 0.87);
   font-size: 21px;
   font-weight: 500;
