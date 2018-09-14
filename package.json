@@ -5,7 +5,7 @@
   "repository": "https://github.com/CookieInfo/widgets-boilerplate",
   "main": "index.html",
   "scripts": {
-    "start": "browser-sync start --server --serveStatic './dist' --files 'dist/**' --port 8085",
+    "start": "http-server -c-1 ./dist -d -p 9075 --cors='*'",
     "lint": "eslint ."
   },
   "author": "Cookie Information ApS",
